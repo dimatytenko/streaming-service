@@ -5,6 +5,7 @@ import {Lato} from 'next/font/google';
 import {PropsWithChildren} from 'react';
 import {Main} from './styles';
 import {ThemeWrapper} from './themeWrapper';
+import {RootStyleRegistry} from './rootStyleRegistry';
 
 const lato = Lato({subsets: ['latin'], weight: ['300', '400', '700']});
 
@@ -18,9 +19,11 @@ export default function RootLayout({children}: PropsWithChildren) {
     <html lang="en">
       <body className={lato.className}>
         <ThemeWrapper>
-          <Header />
-          <Main>{children}</Main>
-          <Footer />
+          <RootStyleRegistry>
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+          </RootStyleRegistry>
         </ThemeWrapper>
       </body>
     </html>

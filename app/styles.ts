@@ -10,10 +10,13 @@ export const Main = styled.main`
 
 export const HeaderWrapper = styled.header`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   background: ${({theme}) => theme.palette.dark.secondary};
   color: ${({theme}) => theme.palette.light.primary};
   height: 100px;
+  padding-left: 20px;
 `;
 
 export const FooterWrapper = HeaderWrapper;
