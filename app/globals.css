@@ -1,0 +1,5 @@
+.ant-typography,
+.ant-card,
+.ant-card .ant-card-head .ant-tabs-top {
+  font-family: inherit !important;
+}

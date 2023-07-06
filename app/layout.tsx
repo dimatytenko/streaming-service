@@ -1,6 +1,7 @@
 import 'modern-normalize';
-import {Footer} from '@/components/Footer';
-import {Header} from '@/components/Header';
+import './globals.css';
+import {Footer} from '@/components/Layout/Footer';
+import {Header} from '@/components/Layout/Header';
 import {Lato} from 'next/font/google';
 import {PropsWithChildren} from 'react';
 import {Main} from './styles';
