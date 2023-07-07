@@ -13,7 +13,7 @@ export const ActorsCardContent: React.FC<ActorsCardContentProps> = ({card}) => {
       <ImageWrapper>
         <Image src={card.profile_path ? `${POSTER_IMG_URL}${card.profile_path}` : noPhoto.src} alt="actor" />
       </ImageWrapper>
-      <StyledTitle level={5}>{card.name}</StyledTitle>
+      <StyledTitle>{card.name}</StyledTitle>
       <Text type="secondary">{card.name}</Text>
       <br />
       <Text type="secondary">{card.popularity}</Text>
