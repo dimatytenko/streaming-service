@@ -11,6 +11,7 @@ export default function StyledComponentsRegistry({children}: {children: React.Re
 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
+    // @ts-ignore
     styledComponentsStyleSheet.instance.clearTag();
     return styles;
   });
