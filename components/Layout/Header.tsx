@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
       <MenuWrapper>
         <MenuLink href="/movies">Movies</MenuLink>
         <MenuLink href="/tv">TV Shows</MenuLink>
-        <MenuLink href="/actors">Actors</MenuLink>
+        <MenuLink href="/actors/today">Actors</MenuLink>
       </MenuWrapper>
       <MenuWrapper>
         <MenuLink href="/auth">Log in</MenuLink>

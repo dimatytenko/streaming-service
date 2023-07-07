@@ -9,3 +9,16 @@ export interface ITrendingMovies {
   release_date: string;
   vote_average: number;
 }
+
+export interface ITrendingActors {
+  id: number;
+  adult?: boolean;
+  name?: string;
+  original_name?: string;
+  media_type?: string;
+  popularity?: number;
+  gender?: number;
+  known_for_department?: string;
+  profile_path?: string;
+  known_for?: ITrendingMovies[];
+}
