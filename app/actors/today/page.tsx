@@ -1,4 +1,3 @@
-'use client';
 import {API_KEY, API_URL} from '@/constants/api';
 import {TimeFrame} from '@/constants/common';
 import {ActorsWrapper, CardsWrapper} from '../styles';
