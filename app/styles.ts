@@ -1,5 +1,5 @@
 'use client';
-import {styled} from 'styled-components';
+import styled from 'styled-components';
 
 export const Main = styled.main`
   flex-grow: 1;
@@ -20,3 +20,10 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const FooterWrapper = HeaderWrapper;
+
+export const HomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+`;
