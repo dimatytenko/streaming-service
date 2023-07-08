@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const HeaderWrapper = styled.div`
   padding: 24px 24px 0 24px;
   background: ${({theme}) => theme.palette.dark.primary};
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
 `;
 
 export const StyledTitle = styled.h2`

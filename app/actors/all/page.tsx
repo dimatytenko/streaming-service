@@ -24,17 +24,15 @@ export default async function ActorsAll({searchParams: {page}}: Props) {
   const data = await getData(page || 1);
 
   return (
-    <>
-      <ActorsWrapper>
-        <CardsWrapper>
-          {data?.results?.map((card: ITrendingActors) => (
-            <ActorsCardContent key={card.id} card={card} />
-          ))}
-        </CardsWrapper>
-        <PaginationWrapper>
-          <Pagination data={data} />
-        </PaginationWrapper>
-      </ActorsWrapper>
-    </>
+    <ActorsWrapper>
+      <CardsWrapper>
+        {data?.results?.map((card: ITrendingActors) => (
+          <ActorsCardContent key={card.id} card={card} />
+        ))}
+      </CardsWrapper>
+      <PaginationWrapper>
+        <Pagination data={data} />
+      </PaginationWrapper>
+    </ActorsWrapper>
   );
 }
