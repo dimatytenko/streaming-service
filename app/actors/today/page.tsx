@@ -16,7 +16,6 @@ const getData = async (timeFrame: string, page = 1) => {
 
 export default async function ActorsToday() {
   const data = await getData(TimeFrame.DAY);
-  console.log(data.results);
 
   return (
     <ActorsWrapper>

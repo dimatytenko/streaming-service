@@ -22,3 +22,10 @@ export interface ITrendingActors {
   profile_path?: string;
   known_for?: ITrendingMovies[];
 }
+
+export interface ITrendingActorsData {
+  page: number;
+  results: ITrendingActors[];
+  total_pages: number;
+  total_results: number;
+}

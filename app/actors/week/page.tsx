@@ -16,7 +16,6 @@ const getData = async (timeFrame: string, page = 1) => {
 
 export default async function ActorsWeek() {
   const data = await getData(TimeFrame.WEEK);
-  console.log(data.results);
 
   return (
     <ActorsWrapper>
