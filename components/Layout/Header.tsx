@@ -3,6 +3,7 @@ import logo from '@/assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import {MenuLink, MenuWrapper} from './styles';
+import {ActorsPathes} from '@/constants/common';
 
 export const Header: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const Header: React.FC = () => {
       <MenuWrapper>
         <MenuLink href="/movies">Movies</MenuLink>
         <MenuLink href="/tv">TV Shows</MenuLink>
-        <MenuLink href="/actors/today">Actors</MenuLink>
+        <MenuLink href={ActorsPathes.ALL}>Actors</MenuLink>
       </MenuWrapper>
       <MenuWrapper>
         <MenuLink href="/auth">Log in</MenuLink>

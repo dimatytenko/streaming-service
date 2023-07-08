@@ -20,6 +20,22 @@ export const Image = styled.img`
   object-fit: cover;
 `;
 
+export const ContentWrapper = styled.div`
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+`;
+
 export const StyledTitle = styled.h3`
   text-align: center;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
+export const StyledText = styled.h6`
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
 `;

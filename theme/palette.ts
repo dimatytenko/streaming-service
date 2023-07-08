@@ -1,6 +1,7 @@
 const lightColors = {
   primary: '#F4F4F2',
   secondary: '#E8E8E8',
+  blue: 'blue',
 };
 
 const darkColors = {

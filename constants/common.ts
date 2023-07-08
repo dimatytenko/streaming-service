@@ -3,6 +3,9 @@ export enum TimeFrame {
   WEEK = 'week',
 }
 
-export enum PAGES {
+export enum ActorsPathes {
   ACTORS = 'actors',
+  ALL = '/actors/all',
+  TODAY = '/actors/today',
+  WEEK = '/actors/week',
 }
