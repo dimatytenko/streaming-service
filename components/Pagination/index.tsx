@@ -2,7 +2,7 @@
 import {FC} from 'react';
 import {useRouter, usePathname} from 'next/navigation';
 import {Pagination as AntdPagination} from 'antd';
-import {ITrendingActorsData} from '@/types/data';
+import {ITrendingActorsData} from '@/types/actors';
 
 export const Pagination: FC<{data: ITrendingActorsData}> = ({data}) => {
   const router = useRouter();
