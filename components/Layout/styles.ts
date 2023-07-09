@@ -13,3 +13,11 @@ export const MenuLink = styled(Link)`
   font-size: 24px;
   margin: 0 20px;
 `;
+
+export const MenuMoreLink = styled.div`
+  color: ${({theme}) => theme.palette.dark.primary};
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 24px;
+  margin: 0 20px;
+`;
