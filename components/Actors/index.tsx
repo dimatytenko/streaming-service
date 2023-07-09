@@ -1,0 +1,68 @@
+'use client';
+import {FC, useState, useEffect} from 'react';
+import {FloatButton} from 'antd';
+
+import {CardsWrapper, StyledButton, LoaderWrapper} from './styles';
+import {ActorsCardContent} from '@/components/Card/Actor';
+import {ITrendingActors} from '@/types/actors';
+import {getActors} from '@/services/actors';
+import {TimeFrame} from '@/constants/common';
+import {PageLoader} from '@/components/Loader';
+
+type Props = {
+  timeFrame: TimeFrame;
+};
+
+export const Actors: FC<Props> = ({timeFrame}) => {
+  const [page, setPage] = useState(1);
+  const [actors, setActors] = useState<ITrendingActors[] | []>([]);
+  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const getData = async (page: number) => {
+      try {
+        setIsLoading(true);
+        const data = await getActors(timeFrame, page);
+        if (!!actors.length) {
+          setActors((prev) => [...prev, ...data.results]);
+        } else {
+          setActors(data.results);
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+        setIsLoading(false);
+      }
+    };
+
+    getData(page);
+  }, [page]);
+
+  if (loading) {
+    return (
+      <LoaderWrapper>
+        <PageLoader />
+      </LoaderWrapper>
+    );
+  }
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
+  };
+
+  return (
+    <>
+      <CardsWrapper>
+        {actors.map((card) => (
+          <ActorsCardContent key={card.id} card={card} />
+        ))}
+      </CardsWrapper>
+      <StyledButton onClick={handleLoadMore} loading={isLoading}>
+        Add more
+      </StyledButton>
+      <FloatButton.BackTop />
+    </>
+  );
+};
