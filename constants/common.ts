@@ -8,3 +8,8 @@ export enum ActorsPathes {
   TODAY = '/actors/today',
   WEEK = '/actors/week',
 }
+
+export enum CardVariants {
+  PRIMARY = 'PRIMARY',
+  SECONDARY = 'SECONDARY',
+}

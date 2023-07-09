@@ -2,19 +2,28 @@
 import styled from 'styled-components';
 import {Card} from 'antd';
 import Title from 'antd/es/typography/Title';
+import {CardVariants} from '@/constants/common';
 
-export const StyledCard = styled(Card)`
+export const StyledCard = styled(Card)<{$variant: CardVariants}>`
   &.ant-card .ant-card-head {
-    background: ${({theme}) => theme.palette.dark.primary};
+    background: ${({theme, $variant}) =>
+      $variant === CardVariants.PRIMARY ? theme.palette.dark.primary : theme.palette.dark.secondary};
     font-size: 24px;
-    color: ${({theme}) => theme.palette.dark.secondary};
+    color: ${({theme, $variant}) =>
+      $variant === CardVariants.PRIMARY ? theme.palette.dark.secondary : theme.palette.dark.primary};
   }
   &.ant-card .ant-card-body {
-    background: ${({theme}) => theme.palette.light.primary};
-    border: ${({theme}) => `2px solid ${theme.palette.dark.primary}`};
+    background: ${({theme, $variant}) =>
+      $variant === CardVariants.PRIMARY ? theme.palette.light.primary : theme.palette.dark.primary};
+    border: ${({theme, $variant}) =>
+      `2px solid ${$variant === CardVariants.PRIMARY ? theme.palette.dark.primary : theme.palette.dark.secondary}`};
     border-top: none;
     display: flex;
     justify-content: space-between;
+    &::after,
+    &::before {
+      display: none;
+    }
   }
   .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
     color: ${({theme}) => theme.palette.dark.secondary};
