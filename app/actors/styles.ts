@@ -9,12 +9,7 @@ export const LayoutWrapper = styled.div`
   flex-direction: column;
   padding: 20px;
 `;
-export const LayoutContent = styled.div`
-  min-height: 500px;
-  border: 1px solid ${({theme}) => theme.palette.dark.primary};
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-`;
+export const LayoutContent = styled.div``;
 
 export const ActorsWrapper = styled.div`
   display: flex;
