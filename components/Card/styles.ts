@@ -19,7 +19,9 @@ export const StyledCard = styled(Card)<{$variant: CardVariants}>`
       `2px solid ${$variant === CardVariants.PRIMARY ? theme.palette.dark.primary : theme.palette.dark.secondary}`};
     border-top: none;
     display: flex;
-    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+
     &::after,
     &::before {
       display: none;

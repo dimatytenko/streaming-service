@@ -20,6 +20,7 @@ export const CardWrapper = styled.div`
   margin: 12px;
   border: 2px solid ${({theme}) => theme.palette.light.secondary};
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 export const ImageWrapper = styled.div`
@@ -51,10 +52,10 @@ export const StyledTitle = styled.h3`
 `;
 
 export const StyledText = styled.h6`
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 700;
+  color: ${({theme}) => theme.palette.dark.secondary};
+  margin-right: 10px;
 `;
 
 export const StyledButton = styled(Button)`
@@ -70,4 +71,9 @@ export const NothingWrapper = styled.div`
   align-items: center;
   height: 300px;
   width: 100%;
+`;
+
+export const InnerCardContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
