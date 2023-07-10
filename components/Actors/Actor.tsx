@@ -1,21 +1,45 @@
 'use client';
+import {useRouter} from 'next/navigation';
+import {Badge, Typography} from 'antd';
+
 import {POSTER_IMG_URL} from '@/constants/api';
-import {CardWrapper, ImageWrapper, Image, ContentWrapper, StyledTitle, StyledText} from './styles';
+import {
+  CardWrapper,
+  ImageWrapper,
+  Image,
+  ContentWrapper,
+  StyledTitle,
+  StyledText,
+  InnerCardContentWrapper,
+} from './styles';
 import {ActorsCardContentProps} from './types';
 import noPhoto from '@/assets/No_image_available.png';
+import {ActorsPaths} from '@/constants/common';
+
+const {Text} = Typography;
 
 export const ActorsCardContent: React.FC<ActorsCardContentProps> = ({card}) => {
-  console.log('card', card);
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`${ActorsPaths.ACTORS}/${card.id}`);
+  };
 
   return (
-    <CardWrapper key={card.id}>
+    <CardWrapper key={card.id} onClick={handleClick}>
       <ImageWrapper>
         <Image src={card.profile_path ? `${POSTER_IMG_URL}${card.profile_path}` : noPhoto.src} alt="actor" />
       </ImageWrapper>
       <ContentWrapper>
         <StyledTitle>{card.name}</StyledTitle>
-        <StyledText>{card.popularity}</StyledText>
-        <StyledText>{card.gender === 2 ? 'man' : 'woman'}</StyledText>
+        <InnerCardContentWrapper>
+          <StyledText>Popularity:</StyledText>
+          <Badge count={Math.round(card?.popularity || 0)} color="#059d2f" overflowCount={10000} />
+        </InnerCardContentWrapper>
+        <InnerCardContentWrapper>
+          <StyledText>Gender:</StyledText>
+          <Text type="secondary">{card.gender === 2 ? 'man' : 'woman'}</Text>
+        </InnerCardContentWrapper>
       </ContentWrapper>
     </CardWrapper>
   );
