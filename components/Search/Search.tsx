@@ -1,17 +1,16 @@
 'use client';
-import {FC} from 'react';
 import {Input} from 'antd';
 const {Search} = Input;
 import {useRouter} from 'next/navigation';
 
-import {ActorsPathes} from '@/constants/common';
+import {ActorsPaths} from '@/constants/common';
 
 type Props = {
-  route: ActorsPathes;
+  route: ActorsPaths;
   placeholder: string;
 };
 
-export const SearchComponent: FC<Props> = ({route, placeholder}) => {
+export const SearchComponent: React.FC<Props> = ({route, placeholder}) => {
   const router = useRouter();
   const onSearch = (value: string) => router.push(`${route}?page=1&query=${value}`);
 

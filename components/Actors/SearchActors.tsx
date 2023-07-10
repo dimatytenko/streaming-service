@@ -1,5 +1,5 @@
 'use client';
-import {FC, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 import {getBySearch} from '@/services/actors';
 import {ActorsCardContent} from '@/components/Actors/Actor';
@@ -14,7 +14,7 @@ type Props = {
   page: number;
 };
 
-export const SearchActors: FC<Props> = ({query, page}) => {
+export const SearchActors: React.FC<Props> = ({query, page}) => {
   const [data, setData] = useState<ITrendingActorsData>();
 
   useEffect(() => {
