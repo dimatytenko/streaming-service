@@ -48,4 +48,17 @@ export const StyledTitle = styled(Title)`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: center;
+  margin-bottom: 0 !important;
+`;
+
+export const CardSubTitleText = styled.span`
+  font-size: 14px;
+  font-weight: 700;
+  color: ${({theme}) => theme.palette.dark.secondary};
+  margin-right: 10px;
+`;
+
+export const InnerCardContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;

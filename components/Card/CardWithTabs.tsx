@@ -4,7 +4,14 @@ import {CardVariants} from '@/constants/common';
 import {ICardWithTabs} from '@/types/data';
 import {Progress, Typography} from 'antd';
 import {useState} from 'react';
-import {ContentElementImage, ContentElementWrapper, StyledCard, StyledTitle} from './styles';
+import {
+  CardSubTitleText,
+  ContentElementImage,
+  ContentElementWrapper,
+  InnerCardContentWrapper,
+  StyledCard,
+  StyledTitle,
+} from './styles';
 
 const {Text} = Typography;
 
@@ -60,7 +67,10 @@ const CardContent: React.FC<CardContentProps> = ({data}) => {
           <ContentElementImage src={`${POSTER_IMG_URL}${d.image}`} />
           <Progress percent={Math.round(d.vote * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
           <StyledTitle level={5}>{d.title}</StyledTitle>
-          <Text type="secondary">{d.releaseDate}</Text>
+          <InnerCardContentWrapper>
+            <CardSubTitleText>Release:</CardSubTitleText>
+            <Text type="secondary">{d.releaseDate}</Text>
+          </InnerCardContentWrapper>
         </ContentElementWrapper>
       ))}
     </>

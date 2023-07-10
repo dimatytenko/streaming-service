@@ -1,6 +1,5 @@
 import {Card} from '@/components/Card/Card';
 import {CardWithTabs} from '@/components/Card/CardWithTabs';
-import {API_KEY, API_URL} from '@/constants/api';
 import {TimeFrame} from '@/constants/common';
 import {toCardStateMovies, toCardStateShows} from '@/helpers/data';
 import {getTrendingMovies, getUpcomingMovies} from '@/services/movies';

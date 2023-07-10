@@ -9,6 +9,7 @@ export const toCardStateMovies = (data: IMovies[]): ICardWithTabs[] => {
     vote: d.vote_average,
     title: d.title,
     releaseDate: d.release_date,
+    popularity: d.popularity,
   }));
 };
 
@@ -19,5 +20,6 @@ export const toCardStateShows = (data: IShows[]): ICardWithTabs[] => {
     vote: d.vote_average,
     title: d.name,
     releaseDate: d.first_air_date,
+    popularity: d.popularity,
   }));
 };
