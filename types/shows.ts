@@ -1,5 +1,5 @@
-export interface ITrendingShows {
-  adult: boolean;
+export interface IShows {
+  adult?: boolean;
   backdrop_path: string;
   id: number;
   name: string;

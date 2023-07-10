@@ -2,23 +2,10 @@ import {Card} from '@/components/Card/Card';
 import {CardWithTabs} from '@/components/Card/CardWithTabs';
 import {API_KEY, API_URL} from '@/constants/api';
 import {TimeFrame} from '@/constants/common';
-import {toCardStateMovies, toCardStateTrendingShows} from '@/helpers/data';
+import {toCardStateMovies, toCardStateShows} from '@/helpers/data';
+import {getTrendingMovies, getUpcomingMovies} from '@/services/movies';
+import {getAiringTodayShows, getTrendingShows} from '@/services/shows';
 import {CardWrapper, HomeWrapper} from './styles';
-
-const getTrendingMovies = async (timeFrame: string) => {
-  const res = await fetch(`${API_URL}/trending/movie/${timeFrame}?api_key=${API_KEY}`);
-  return res.json();
-};
-
-const getTrendingShows = async (timeFrame: string) => {
-  const res = await fetch(`${API_URL}/trending/tv/${timeFrame}?api_key=${API_KEY}`);
-  return res.json();
-};
-
-const getUpcomingMovies = async () => {
-  const res = await fetch(`${API_URL}/movie/upcoming/?api_key=${API_KEY}`);
-  return res.json();
-};
 
 export default async function Home() {
   const dayTrendingMovies = await getTrendingMovies(TimeFrame.DAY);
@@ -26,11 +13,13 @@ export default async function Home() {
   const dayTrendingShows = await getTrendingShows(TimeFrame.DAY);
   const weekTrendingShows = await getTrendingShows(TimeFrame.WEEK);
   const upcomingMovies = await getUpcomingMovies();
+  const airingTodayShows = await getAiringTodayShows();
   const upcomingMoviesData = toCardStateMovies(upcomingMovies.results);
+  const airingTodayShowsData = toCardStateShows(airingTodayShows.results);
   const dayMoviesData = toCardStateMovies(dayTrendingMovies.results);
   const weekMoviesData = toCardStateMovies(weekTrendingMovies.results);
-  const dayShowsData = toCardStateTrendingShows(dayTrendingShows.results);
-  const weekShowsData = toCardStateTrendingShows(weekTrendingShows.results);
+  const dayShowsData = toCardStateShows(dayTrendingShows.results);
+  const weekShowsData = toCardStateShows(weekTrendingShows.results);
 
   return (
     <HomeWrapper>
@@ -42,6 +31,9 @@ export default async function Home() {
       </CardWrapper>
       <CardWrapper>
         <CardWithTabs title="Most trending TV Shows" dayData={dayShowsData} weekData={weekShowsData} />
+      </CardWrapper>
+      <CardWrapper>
+        <Card title="TV Shows airing today" data={airingTodayShowsData} />
       </CardWrapper>
     </HomeWrapper>
   );
