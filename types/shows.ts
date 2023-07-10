@@ -15,3 +15,14 @@ export interface IShows {
   vote_count: number;
   origin_country: string[];
 }
+
+export interface IShowsData {
+  dates?: {
+    maximum: string;
+    minimum: string;
+  };
+  page: number;
+  results: IShows[];
+  total_pages: number;
+  total_results: number;
+}

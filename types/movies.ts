@@ -15,3 +15,10 @@ export interface IMovies {
   vote_average: number;
   vote_count: number;
 }
+
+export interface IMoviesData {
+  page: number;
+  results: IMovies[];
+  total_pages: number;
+  total_results: number;
+}

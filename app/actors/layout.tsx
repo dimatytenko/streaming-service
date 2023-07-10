@@ -1,14 +1,14 @@
 import {PropsWithChildren} from 'react';
 
 import {LayoutWrapper, LayoutContent, SearchWrapper} from './styles';
-import {SearchComponent} from '@/components/Search';
-import {ActorsPathes} from '@/constants/common';
+import {SearchComponent} from '@/components/Search/Search';
+import {ActorsPaths} from '@/constants/common';
 
-export default function Actorslayout({children}: PropsWithChildren) {
+export default function ActorsLayout({children}: PropsWithChildren) {
   return (
     <LayoutWrapper>
       <SearchWrapper>
-        <SearchComponent route={ActorsPathes.SEARCH} placeholder={'enter the name of the actor'} />
+        <SearchComponent route={ActorsPaths.SEARCH} placeholder={'enter the name of the actor'} />
       </SearchWrapper>
       <LayoutContent>{children}</LayoutContent>
     </LayoutWrapper>

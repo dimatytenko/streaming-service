@@ -1,5 +1,5 @@
 'use client';
-import {FC, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {FloatButton} from 'antd';
 
 import {CardsWrapper, StyledButton} from './styles';
@@ -13,7 +13,7 @@ type Props = {
   timeFrame: TimeFrame;
 };
 
-export const Actors: FC<Props> = ({timeFrame}) => {
+export const Actors: React.FC<Props> = ({timeFrame}) => {
   const [page, setPage] = useState(1);
   const [actors, setActors] = useState<ITrendingActors[] | []>([]);
   const [loading, setLoading] = useState(true);

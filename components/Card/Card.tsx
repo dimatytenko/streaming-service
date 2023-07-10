@@ -2,8 +2,15 @@
 import {POSTER_IMG_URL} from '@/constants/api';
 import {CardVariants} from '@/constants/common';
 import {ICardWithTabs} from '@/types/data';
-import {Typography} from 'antd';
-import {ContentElementImage, ContentElementWrapper, StyledCard, StyledTitle} from './styles';
+import {Badge, Typography} from 'antd';
+import {
+  ContentElementImage,
+  ContentElementWrapper,
+  InnerCardContentWrapper,
+  CardSubTitleText,
+  StyledCard,
+  StyledTitle,
+} from './styles';
 
 const {Text} = Typography;
 
@@ -30,7 +37,14 @@ const CardContent: React.FC<CardContentProps> = ({data}) => {
         <ContentElementWrapper key={d.id}>
           <ContentElementImage src={`${POSTER_IMG_URL}${d.image}`} />
           <StyledTitle level={5}>{d.title}</StyledTitle>
-          <Text type="secondary">{d.releaseDate}</Text>
+          <InnerCardContentWrapper>
+            <CardSubTitleText>Popularity:</CardSubTitleText>
+            <Badge count={Math.round(d.popularity)} color="#059d2f" overflowCount={10000} />
+          </InnerCardContentWrapper>
+          <InnerCardContentWrapper>
+            <CardSubTitleText>Release:</CardSubTitleText>
+            <Text type="secondary">{d.releaseDate}</Text>
+          </InnerCardContentWrapper>
         </ContentElementWrapper>
       ))}
     </>

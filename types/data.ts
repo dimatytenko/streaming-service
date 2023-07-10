@@ -4,4 +4,5 @@ export interface ICardWithTabs {
   vote: number;
   title: string;
   releaseDate: string;
+  popularity: number;
 }

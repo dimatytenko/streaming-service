@@ -3,7 +3,7 @@ export enum TimeFrame {
   WEEK = 'week',
 }
 
-export enum ActorsPathes {
+export enum ActorsPaths {
   ACTORS = '/actors',
   TODAY = '/actors/today',
   WEEK = '/actors/week',

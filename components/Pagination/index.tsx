@@ -1,10 +1,9 @@
 'use client';
-import {FC} from 'react';
 import {useRouter, usePathname} from 'next/navigation';
 import {Pagination as AntdPagination} from 'antd';
 import {ITrendingActorsData} from '@/types/actors';
 
-export const Pagination: FC<{data: ITrendingActorsData; query?: string}> = ({data, query}) => {
+export const Pagination: React.FC<{data: ITrendingActorsData; query?: string}> = ({data, query}) => {
   const router = useRouter();
   const pathname = usePathname();
   console.log('pathname', pathname);
