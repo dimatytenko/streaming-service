@@ -2,8 +2,8 @@
 import {FC, useState, useEffect} from 'react';
 import {FloatButton} from 'antd';
 
-import {CardsWrapper, StyledButton, LoaderWrapper} from './styles';
-import {ActorsCardContent} from '@/components/Card/Actor';
+import {CardsWrapper, StyledButton} from './styles';
+import {ActorsCardContent} from '@/components/Actors/Actor';
 import {ITrendingActors} from '@/types/actors';
 import {getActors} from '@/services/actors';
 import {TimeFrame} from '@/constants/common';
@@ -41,11 +41,7 @@ export const Actors: FC<Props> = ({timeFrame}) => {
   }, [page]);
 
   if (loading) {
-    return (
-      <LoaderWrapper>
-        <PageLoader />
-      </LoaderWrapper>
-    );
+    return <PageLoader />;
   }
 
   const handleLoadMore = () => {
@@ -59,7 +55,7 @@ export const Actors: FC<Props> = ({timeFrame}) => {
           <ActorsCardContent key={card.id} card={card} />
         ))}
       </CardsWrapper>
-      <StyledButton onClick={handleLoadMore} loading={isLoading}>
+      <StyledButton type="primary" onClick={handleLoadMore} loading={isLoading}>
         Add more
       </StyledButton>
       <FloatButton.BackTop />

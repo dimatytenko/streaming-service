@@ -1,6 +1,6 @@
 import {TimeFrame} from '@/constants/common';
-import {ActorsWrapper} from '../styles';
-import {Actors} from '@/components/Actors';
+import {ActorsWrapper, StyledTitle} from '../styles';
+import {Actors} from '@/components/Actors/Actors';
 
 export const metadata = {
   title: 'Streaming service | Actors',
@@ -10,6 +10,7 @@ export const metadata = {
 export default function ActorsWeek() {
   return (
     <ActorsWrapper>
+      <StyledTitle>Most trending actors in the last week</StyledTitle>
       <Actors timeFrame={TimeFrame.WEEK} />
     </ActorsWrapper>
   );

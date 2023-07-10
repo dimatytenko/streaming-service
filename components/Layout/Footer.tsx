@@ -1,5 +1,13 @@
-import {FooterWrapper} from '@/app/styles';
+import {Container} from '@/app/styles';
+import {FooterWrapper, FooterContent} from './styles';
 
 export const Footer: React.FC = () => {
-  return <FooterWrapper>Footer</FooterWrapper>;
+  const date = new Date().getFullYear();
+  return (
+    <FooterWrapper>
+      <Container>
+        <FooterContent>&copy; {date} Copyright. All rights reserved.</FooterContent>
+      </Container>
+    </FooterWrapper>
+  );
 };

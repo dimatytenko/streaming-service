@@ -8,19 +8,6 @@ export const Main = styled.main`
   min-height: calc(100vh - 200px);
 `;
 
-export const HeaderWrapper = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: ${({theme}) => theme.palette.dark.secondary};
-  color: ${({theme}) => theme.palette.light.primary};
-  height: 100px;
-  padding-left: 20px;
-`;
-
-export const FooterWrapper = HeaderWrapper;
-
 export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,4 +17,11 @@ export const HomeWrapper = styled.div`
 
 export const CardWrapper = styled.div`
   margin-bottom: 20px;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: 1540px;
+  padding: 0 20px;
+  margin: 0 auto;
 `;

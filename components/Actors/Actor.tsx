@@ -1,11 +1,12 @@
 'use client';
-
 import {POSTER_IMG_URL} from '@/constants/api';
 import {CardWrapper, ImageWrapper, Image, ContentWrapper, StyledTitle, StyledText} from './styles';
 import {ActorsCardContentProps} from './types';
 import noPhoto from '@/assets/No_image_available.png';
 
 export const ActorsCardContent: React.FC<ActorsCardContentProps> = ({card}) => {
+  console.log('card', card);
+
   return (
     <CardWrapper key={card.id}>
       <ImageWrapper>
@@ -13,7 +14,6 @@ export const ActorsCardContent: React.FC<ActorsCardContentProps> = ({card}) => {
       </ImageWrapper>
       <ContentWrapper>
         <StyledTitle>{card.name}</StyledTitle>
-        <StyledText>{card.name}</StyledText>
         <StyledText>{card.popularity}</StyledText>
         <StyledText>{card.gender === 2 ? 'man' : 'woman'}</StyledText>
       </ContentWrapper>
