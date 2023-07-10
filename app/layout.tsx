@@ -7,6 +7,7 @@ import {PropsWithChildren} from 'react';
 import {Main} from './styles';
 import {ThemeWrapper} from './themeWrapper';
 import {RootStyleRegistry} from './rootStyleRegistry';
+import {Container} from '@/app/styles';
 
 const lato = Lato({subsets: ['latin'], weight: ['300', '400', '700']});
 
@@ -22,7 +23,9 @@ export default function RootLayout({children}: PropsWithChildren) {
         <ThemeWrapper>
           <RootStyleRegistry>
             <Header />
-            <Main>{children}</Main>
+            <Main>
+              <Container>{children}</Container>
+            </Main>
             <Footer />
           </RootStyleRegistry>
         </ThemeWrapper>

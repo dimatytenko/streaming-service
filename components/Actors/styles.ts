@@ -2,44 +2,46 @@
 import styled from 'styled-components';
 import {Button} from 'antd';
 
-import {Media} from '@/theme/breakpoints';
+// import {Media} from '@/theme/breakpoints';
 
 export const CardsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  // justify-content: flex-start;
+  justify-content: center;
   align-items: stretch;
   background: ${({theme}) => theme.palette.light.primary};
   border-top: none;
   margin: -12px;
-
-  ${Media.down.m} {
-    justify-content: center;
-  }
 `;
 
 export const CardWrapper = styled.div`
   flex-grow: 1;
-  max-width: 240px;
+  max-width: 300px;
   margin: 12px;
+  border: 2px solid ${({theme}) => theme.palette.light.secondary};
+  border-radius: 8px;
 `;
 
 export const ImageWrapper = styled.div`
+  padding: 4px;
   border-radius: 8px;
   overflow: hidden;
   width: 100%;
-  height: 300px;
+  height: 400px;
 `;
 
 export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 `;
 
 export const ContentWrapper = styled.div`
   margin-top: 8px;
   border-radius: 8px;
+  padding: 0 8px;
 `;
 
 export const StyledTitle = styled.h3`
