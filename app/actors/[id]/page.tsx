@@ -25,7 +25,7 @@ export default async function Movie({params: {id}}: Props) {
   return (
     <ActorsWrapper>
       <ActorsCardContent card={actor} />
-      <ActorTabs title={'hwvecwjkhckjew'} movies={movies} shows={tvShows} images={images} />
+      <ActorTabs title={'Info'} movies={movies} shows={tvShows} images={images} />
     </ActorsWrapper>
   );
 }
