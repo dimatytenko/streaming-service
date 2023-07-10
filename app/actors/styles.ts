@@ -6,7 +6,7 @@ export const LayoutWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 24px 0;
 `;
 export const LayoutContent = styled.div``;
 

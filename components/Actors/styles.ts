@@ -7,8 +7,7 @@ import {Button} from 'antd';
 export const CardsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  // justify-content: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   background: ${({theme}) => theme.palette.light.primary};
   border-top: none;

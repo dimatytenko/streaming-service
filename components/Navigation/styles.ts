@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 export const MenuWrapper = styled.div`
   display: flex;
+  gap: 24px;
 `;
 
 export const MenuLink = styled(Link)`
@@ -11,7 +12,6 @@ export const MenuLink = styled(Link)`
   text-decoration: none;
   font-weight: 300;
   font-size: 24px;
-  margin: 0 20px;
 `;
 
 export const MenuMoreLink = styled.div`
@@ -19,5 +19,4 @@ export const MenuMoreLink = styled.div`
   text-decoration: none;
   font-weight: 300;
   font-size: 24px;
-  margin: 0 20px;
 `;
