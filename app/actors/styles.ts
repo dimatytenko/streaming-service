@@ -1,6 +1,5 @@
 'use client';
 import styled from 'styled-components';
-import {Media} from '@/theme/breakpoints';
 
 export const LayoutWrapper = styled.div`
   width: 100%;
@@ -15,25 +14,21 @@ export const ActorsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 24px;
-`;
-
-export const CardsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  background: ${({theme}) => theme.palette.light.primary};
-  border-top: none;
-  margin: -12px;
-
-  ${Media.down.m} {
-    justify-content: center;
-  }
 `;
 
 export const PaginationWrapper = styled.div`
   margin-top: 12px;
   display: flex;
   justify-content: right;
+`;
+
+export const StyledTitle = styled.h2`
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+`;
+
+export const SearchWrapper = styled.div`
+  margin: 0 auto;
+  margin-bottom: 24px;
 `;

@@ -1,8 +1,9 @@
-import {ActorsWrapper, CardsWrapper, PaginationWrapper} from './styles';
-import {ActorsCardContent} from '@/components/Card/Actor';
+import {ActorsWrapper, PaginationWrapper, StyledTitle} from './styles';
+import {ActorsCardContent} from '@/components/Actors/Actor';
 import {ITrendingActors} from '@/types/actors';
 import {Pagination} from '@/components/Pagination';
 import {getAllActors} from '@/services/actors';
+import {CardsWrapper} from '@/components/Actors/styles';
 
 export const metadata = {
   title: 'Streaming service | Actors',
@@ -20,6 +21,7 @@ export default async function ActorsAll({searchParams: {page}}: Props) {
 
   return (
     <ActorsWrapper>
+      <StyledTitle>Most trending actors</StyledTitle>
       <CardsWrapper>
         {data?.results?.map((card: ITrendingActors) => (
           <ActorsCardContent key={card.id} card={card} />

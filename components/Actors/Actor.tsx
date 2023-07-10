@@ -1,5 +1,4 @@
 'use client';
-
 import {POSTER_IMG_URL} from '@/constants/api';
 import {CardWrapper, ImageWrapper, Image, ContentWrapper, StyledTitle, StyledText} from './styles';
 import {ActorsCardContentProps} from './types';

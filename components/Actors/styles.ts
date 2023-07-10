@@ -18,16 +18,55 @@ export const CardsWrapper = styled.div`
   }
 `;
 
-export const StyledButton = styled(Button)`
-  margin: 0 auto;
-  max-width: 300px;
-  display: block;
+export const CardWrapper = styled.div`
+  flex-grow: 1;
+  max-width: 240px;
+  margin: 12px;
 `;
 
-export const LoaderWrapper = styled.div`
+export const ImageWrapper = styled.div`
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+`;
+
+export const Image = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
+`;
+
+export const ContentWrapper = styled.div`
+  margin-top: 8px;
+  border-radius: 8px;
+`;
+
+export const StyledTitle = styled.h3`
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
+export const StyledText = styled.h6`
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+export const StyledButton = styled(Button)`
+  margin: 0 auto;
+  width: 200px;
+  display: block;
+  margin-top: 24px;
+`;
+
+export const NothingWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 300px;
+  width: 100%;
 `;
