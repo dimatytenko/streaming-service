@@ -27,3 +27,7 @@ export const HomeWrapper = styled.div`
   width: 100%;
   padding: 20px;
 `;
+
+export const CardWrapper = styled.div`
+  margin-bottom: 20px;
+`;

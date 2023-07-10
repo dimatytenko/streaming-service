@@ -1,7 +1,8 @@
 'use client';
 import {POSTER_IMG_URL} from '@/constants/api';
-import {ITrendingMovies} from '@/types/data';
-import {Typography} from 'antd';
+import {CardVariants} from '@/constants/common';
+import {ICardWithTabs} from '@/types/data';
+import {Progress, Typography} from 'antd';
 import {useState} from 'react';
 import {ContentElementImage, ContentElementWrapper, StyledCard, StyledTitle} from './styles';
 
@@ -20,12 +21,12 @@ const tabList = [
 
 type CardWithTabsProps = {
   title: string;
-  dayData: ITrendingMovies[];
-  weekData: ITrendingMovies[];
+  dayData: ICardWithTabs[];
+  weekData: ICardWithTabs[];
 };
 
 type CardContentProps = {
-  data: ITrendingMovies[];
+  data: ICardWithTabs[];
 };
 
 export const CardWithTabs: React.FC<CardWithTabsProps> = ({title, dayData, weekData}) => {
@@ -40,6 +41,7 @@ export const CardWithTabs: React.FC<CardWithTabsProps> = ({title, dayData, weekD
 
   return (
     <StyledCard
+      $variant={CardVariants.PRIMARY}
       style={{width: '100%'}}
       title={title}
       tabList={tabList}
@@ -55,9 +57,10 @@ const CardContent: React.FC<CardContentProps> = ({data}) => {
     <>
       {data.map((d) => (
         <ContentElementWrapper key={d.id}>
-          <ContentElementImage src={`${POSTER_IMG_URL}${d.poster_path}`} />
+          <ContentElementImage src={`${POSTER_IMG_URL}${d.image}`} />
+          <Progress percent={Math.round(d.vote * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
           <StyledTitle level={5}>{d.title}</StyledTitle>
-          <Text type="secondary">{d.release_date}</Text>
+          <Text type="secondary">{d.releaseDate}</Text>
         </ContentElementWrapper>
       ))}
     </>

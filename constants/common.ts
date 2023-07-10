@@ -9,3 +9,8 @@ export enum ActorsPathes {
   WEEK = '/actors/week',
   SEARCH = '/actors/search',
 }
+
+export enum CardVariants {
+  PRIMARY = 'PRIMARY',
+  SECONDARY = 'SECONDARY',
+}
