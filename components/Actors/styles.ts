@@ -15,27 +15,18 @@ export const CardsWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  flex-grow: 1;
-  max-width: 300px;
+  width: 220px;
   margin: 12px;
   border: 2px solid ${({theme}) => theme.palette.light.secondary};
   border-radius: 8px;
   cursor: pointer;
+  padding: 4px;
 `;
 
 export const ImageWrapper = styled.div`
-  padding: 4px;
-  border-radius: 8px;
   overflow: hidden;
-  width: 100%;
-  height: 400px;
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   border-radius: 8px;
+  width: 100%;
 `;
 
 export const ContentWrapper = styled.div`
