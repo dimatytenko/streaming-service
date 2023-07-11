@@ -37,6 +37,13 @@ export const ContentElementWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 180px;
+  border-radius: 8px;
+`;
+
+export const ImageWrapper = styled.div`
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
 `;
 
 export const ContentElementImage = styled.img`

@@ -3,10 +3,12 @@ import {POSTER_IMG_URL} from '@/constants/api';
 import {CardVariants} from '@/constants/common';
 import {Progress, Typography, Badge} from 'antd';
 import {useState} from 'react';
+import Image from 'next/image';
+
 import {
   CardSubTitleText,
-  ContentElementImage,
   ContentElementWrapper,
+  ImageWrapper,
   InnerCardContentWrapper,
   StyledCard,
   StyledTitle,
@@ -72,7 +74,9 @@ const FilmCardsContent: React.FC<ActorMoviesProps> = ({data}) => {
         .filter((i) => i.poster_path)
         .map((d) => (
           <ContentElementWrapper key={d.id}>
-            <ContentElementImage src={`${POSTER_IMG_URL}${d.poster_path}`} />
+            <ImageWrapper>
+              <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={180} height={330} alt="film poster" />
+            </ImageWrapper>
             <Progress percent={Math.round(d.vote_average * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
             <StyledTitle level={5}>{d.title}</StyledTitle>
             <InnerCardContentWrapper>
@@ -104,7 +108,9 @@ const ShowCardsContent: React.FC<ActorShowsProps> = ({data}) => {
         .filter((i) => i.poster_path)
         .map((d) => (
           <ContentElementWrapper key={d.id}>
-            <ContentElementImage src={`${POSTER_IMG_URL}${d.poster_path}`} />
+            <ImageWrapper>
+              <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={180} height={330} alt="show poster" />
+            </ImageWrapper>
             <Progress percent={Math.round(d.vote_average * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
             <StyledTitle level={5}>{d.name}</StyledTitle>
             <InnerCardContentWrapper>
@@ -126,7 +132,9 @@ const ImagesCardsContent: React.FC<ActorImagesProps> = ({data}) => {
     <>
       {data.profiles.map((d) => (
         <ContentElementWrapper key={d.file_path}>
-          <ContentElementImage src={`${POSTER_IMG_URL}${d.file_path}`} />
+          <ImageWrapper>
+            <Image src={`${POSTER_IMG_URL}${d.file_path}`} width={180} height={330} alt="actor image" />
+          </ImageWrapper>
           <Progress percent={Math.round(d.vote_average * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
         </ContentElementWrapper>
       ))}
