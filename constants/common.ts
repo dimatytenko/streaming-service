@@ -14,3 +14,11 @@ export enum CardVariants {
   PRIMARY = 'PRIMARY',
   SECONDARY = 'SECONDARY',
 }
+
+export const searchNavItems = ['Movies', 'TV Shows', 'People', 'Keywords', 'Collections', 'Companies'];
+
+export enum MediaTypes {
+  MOVIE = 'movie',
+  PERSON = 'person',
+  TV = 'tv',
+}

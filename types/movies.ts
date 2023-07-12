@@ -1,3 +1,5 @@
+import {MediaTypes} from '@/constants/common';
+
 export interface IMovies {
   adult: boolean;
   backdrop_path: string;
@@ -7,7 +9,7 @@ export interface IMovies {
   original_title: string;
   overview: string;
   poster_path: string;
-  media_type: string;
+  media_type: MediaTypes;
   genre_ids: number[];
   popularity: number;
   release_date: string;

@@ -1,16 +1,18 @@
+import {MediaTypes} from '@/constants/common';
 import {IMovies} from './movies';
 import {IShows} from './shows';
 
 export interface ITrendingActors {
   id: number;
-  adult?: boolean;
-  name?: string;
-  original_name?: string;
-  media_type?: string;
-  popularity?: number;
-  gender?: number;
-  known_for_department?: string;
-  profile_path?: string;
+  adult: boolean;
+  name: string;
+  original_name: string;
+  media_type: MediaTypes;
+  popularity: number;
+  gender: number;
+  known_for_department: string;
+  known_for: IMovies[];
+  profile_path: string;
 }
 
 export interface ITrendingActorsData {

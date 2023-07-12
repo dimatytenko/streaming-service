@@ -25,5 +25,5 @@ export const FooterContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({theme}) => theme.palette.light.primary};
+  color: ${({theme}) => theme.palette.dark.primary};
 `;

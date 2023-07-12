@@ -56,14 +56,6 @@ export const StyledButton = styled(Button)`
   margin-top: 24px;
 `;
 
-export const NothingWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  width: 100%;
-`;
-
 export const InnerCardContentWrapper = styled.div`
   display: flex;
   align-items: center;

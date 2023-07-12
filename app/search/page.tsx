@@ -1,8 +1,23 @@
+import {GlobalSearchContent} from '@/components/Search/GlobalSearchContent';
+import {GlobalSearchNav} from '@/components/Search/GlobalSearchNav';
+import {SearchPageWrapper} from '../actors/styles';
+
 export const metadata = {
   title: 'Streaming service | Search',
   description: 'Search for all the media that you can find on web',
 };
 
-export default function Search() {
-  return <h1>Global Search</h1>;
+type Props = {
+  searchParams: {
+    query: string;
+  };
+};
+
+export default function Search({searchParams: {query}}: Props) {
+  return (
+    <SearchPageWrapper>
+      <GlobalSearchNav />
+      <GlobalSearchContent query={query} />
+    </SearchPageWrapper>
+  );
 }

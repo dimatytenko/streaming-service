@@ -32,3 +32,9 @@ export const SearchWrapper = styled.div`
   margin: 0 auto;
   margin-bottom: 24px;
 `;
+
+export const SearchPageWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 20px;
+`;

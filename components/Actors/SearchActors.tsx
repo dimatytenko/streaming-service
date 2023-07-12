@@ -3,11 +3,12 @@ import {useState, useEffect} from 'react';
 
 import {getBySearch} from '@/services/actors';
 import {ActorsCardContent} from '@/components/Actors/Actor';
-import {CardsWrapper, NothingWrapper, StyledTitle} from './styles';
+import {CardsWrapper} from './styles';
 import {ITrendingActorsData} from '@/types/actors';
 import {Pagination} from '@/components/Pagination';
 import {PaginationWrapper} from '@/app/actors/styles';
 import {PageLoader} from '@/components/Loader';
+import {NothingFound} from '../404/NothingFound';
 
 type Props = {
   query: string;
@@ -34,11 +35,7 @@ export const SearchActors: React.FC<Props> = ({query, page}) => {
     return <PageLoader />;
   }
   if (!data.results.length) {
-    return (
-      <NothingWrapper>
-        <StyledTitle>Nothing found</StyledTitle>
-      </NothingWrapper>
-    );
+    return <NothingFound />;
   }
 
   return (

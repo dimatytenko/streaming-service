@@ -1,3 +1,5 @@
+import {MediaTypes} from '@/constants/common';
+
 export interface IShows {
   adult?: boolean;
   backdrop_path: string;
@@ -7,7 +9,7 @@ export interface IShows {
   original_name: string;
   overview: string;
   poster_path: string;
-  media_type: string;
+  media_type: MediaTypes;
   genre_ids: number[];
   popularity: number;
   first_air_date: string;

@@ -4,7 +4,7 @@ import {StyledSearch} from './styles';
 
 export const GlobalSearch: React.FC = () => {
   const router = useRouter();
-  const onSearch = () => router.push(`/search`);
+  const onSearch = (value: string) => router.push(`/search?query=${value}`);
 
   return (
     <StyledSearch

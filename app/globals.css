@@ -63,7 +63,8 @@ h6 {
 .ant-typography,
 .ant-card,
 .ant-card .ant-card-head .ant-tabs-top,
-.ant-progress-line {
+.ant-progress-line,
+.ant-menu {
   font-family: inherit !important;
 }
 
