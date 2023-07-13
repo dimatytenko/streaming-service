@@ -17,17 +17,16 @@ type Props = {
 
 export const SearchActors: React.FC<Props> = ({query, page}) => {
   const [data, setData] = useState<ITrendingActorsData>();
+  const getData = async (query: string, page: number) => {
+    try {
+      const data = await getBySearch(query, page);
+      setData(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
-    const getData = async (query: string, page: number) => {
-      try {
-        const data = await getBySearch(query, page);
-        setData(data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
     getData(query, page);
   }, [query, page]);
 

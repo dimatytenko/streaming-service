@@ -19,24 +19,24 @@ export const Actors: React.FC<Props> = ({timeFrame}) => {
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const getData = async (page: number) => {
-      try {
-        setIsLoading(true);
-        const data = await getActors(timeFrame, page);
-        if (!!actors.length) {
-          setActors((prev) => [...prev, ...data.results]);
-        } else {
-          setActors(data.results);
-        }
-      } catch (e) {
-        console.log(e);
-      } finally {
-        setLoading(false);
-        setIsLoading(false);
+  const getData = async (page: number) => {
+    try {
+      setIsLoading(true);
+      const data = await getActors(timeFrame, page);
+      if (!!actors.length) {
+        setActors((prev) => [...prev, ...data.results]);
+      } else {
+        setActors(data.results);
       }
-    };
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false);
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     getData(page);
   }, [page]);
 

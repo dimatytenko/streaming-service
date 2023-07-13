@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 import Search from 'antd/es/input/Search';
 import {Card} from 'antd';
@@ -38,6 +40,12 @@ export const SearchNavCard = styled(Card)`
   .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
     color: ${({theme}) => theme.palette.dark.secondary};
   }
+`;
+
+export const GlobalSearchContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 export const StyledSpan = styled.span`

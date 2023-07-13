@@ -10,14 +10,15 @@ export const metadata = {
 type Props = {
   searchParams: {
     query: string;
+    page: number;
   };
 };
 
-export default function Search({searchParams: {query}}: Props) {
+export default function Search({searchParams: {query, page}}: Props) {
   return (
     <SearchPageWrapper>
       <GlobalSearchNav />
-      <GlobalSearchContent query={query} />
+      <GlobalSearchContent query={query} page={page || 1} />
     </SearchPageWrapper>
   );
 }

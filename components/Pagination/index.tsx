@@ -2,11 +2,11 @@
 import {useRouter, usePathname} from 'next/navigation';
 import {Pagination as AntdPagination} from 'antd';
 import {ITrendingActorsData} from '@/types/actors';
+import {ISearchData} from '@/types/search';
 
-export const Pagination: React.FC<{data: ITrendingActorsData; query?: string}> = ({data, query}) => {
+export const Pagination: React.FC<{data: ITrendingActorsData | ISearchData; query?: string}> = ({data, query}) => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log('pathname', pathname);
 
   const onChange = (page: number) => {
     if (!page) return;
@@ -16,7 +16,7 @@ export const Pagination: React.FC<{data: ITrendingActorsData; query?: string}> =
   return (
     <AntdPagination
       current={data.page || 1}
-      pageSizeOptions={[20]}
+      showSizeChanger={false}
       defaultPageSize={20}
       total={data.total_results || 20}
       onChange={onChange}

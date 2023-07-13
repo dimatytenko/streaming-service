@@ -1,6 +1,6 @@
 'use client';
 
-import {CardVariants, searchNavItems} from '@/constants/common';
+import {searchNavItems} from '@/constants/common';
 import {Menu, MenuProps} from 'antd';
 import {SearchNavCard} from './styles';
 
