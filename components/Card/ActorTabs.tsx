@@ -12,6 +12,7 @@ import {
   InnerCardContentWrapper,
   StyledCard,
   StyledTitle,
+  ImageActive,
 } from './styles';
 import {IActorMovies, IActorShows, IActorImages} from '@/types/actors';
 
@@ -75,7 +76,9 @@ const FilmCardsContent: React.FC<ActorMoviesProps> = ({data}) => {
         .map((d) => (
           <ContentElementWrapper key={d.id}>
             <ImageWrapper>
-              <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={180} height={330} alt="film poster" />
+              <ImageActive>
+                <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={220} height={330} alt="film poster" />
+              </ImageActive>
             </ImageWrapper>
             <Progress percent={Math.round(d.vote_average * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
             <StyledTitle level={5}>{d.title}</StyledTitle>
@@ -107,9 +110,11 @@ const ShowCardsContent: React.FC<ActorShowsProps> = ({data}) => {
       {data.cast
         .filter((i) => i.poster_path)
         .map((d) => (
-          <ContentElementWrapper key={d.id}>
+          <ContentElementWrapper key={d.poster_path}>
             <ImageWrapper>
-              <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={180} height={330} alt="show poster" />
+              <ImageActive>
+                <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={220} height={330} alt="show poster" />
+              </ImageActive>
             </ImageWrapper>
             <Progress percent={Math.round(d.vote_average * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
             <StyledTitle level={5}>{d.name}</StyledTitle>
@@ -133,7 +138,7 @@ const ImagesCardsContent: React.FC<ActorImagesProps> = ({data}) => {
       {data.profiles.map((d) => (
         <ContentElementWrapper key={d.file_path}>
           <ImageWrapper>
-            <Image src={`${POSTER_IMG_URL}${d.file_path}`} width={180} height={330} alt="actor image" />
+            <Image src={`${POSTER_IMG_URL}${d.file_path}`} width={220} height={330} alt="actor image" />
           </ImageWrapper>
           <Progress percent={Math.round(d.vote_average * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
         </ContentElementWrapper>
