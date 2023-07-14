@@ -21,6 +21,14 @@ export const CardWrapper = styled.div`
   border-radius: 8px;
   cursor: pointer;
   padding: 4px;
+  transition: all 500ms ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.02);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -50,10 +58,9 @@ export const StyledText = styled.h6`
 `;
 
 export const StyledButton = styled(Button)`
-  margin: 0 auto;
+  margin: 24px auto 0;
   width: 200px;
   display: block;
-  margin-top: 24px;
 `;
 
 export const InnerCardContentWrapper = styled.div`

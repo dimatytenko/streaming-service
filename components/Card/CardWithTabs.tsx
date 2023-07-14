@@ -6,12 +6,14 @@ import {Progress, Typography} from 'antd';
 import {useState} from 'react';
 import {
   CardSubTitleText,
-  ContentElementImage,
   ContentElementWrapper,
+  ImageWrapper,
+  ImageActive,
   InnerCardContentWrapper,
   StyledCard,
   StyledTitle,
 } from './styles';
+import Image from 'next/image';
 
 const {Text} = Typography;
 
@@ -64,7 +66,11 @@ const CardContent: React.FC<CardContentProps> = ({data}) => {
     <>
       {data.map((d) => (
         <ContentElementWrapper key={d.id}>
-          <ContentElementImage src={`${POSTER_IMG_URL}${d.image}`} />
+          <ImageWrapper>
+            <ImageActive>
+              <Image src={`${POSTER_IMG_URL}${d.image}`} width={220} height={330} alt="film poster" />
+            </ImageActive>
+          </ImageWrapper>
           <Progress percent={Math.round(d.vote * 10)} strokeColor={{from: '#108ee9', to: '#87d068'}} />
           <StyledTitle level={5}>{d.title}</StyledTitle>
           <InnerCardContentWrapper>

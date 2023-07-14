@@ -17,7 +17,6 @@ export const ActorsCardContent: React.FC<ActorsCardContentProps> = ({card}) => {
   const handleClick = () => {
     router.push(`${ActorsPaths.ACTORS}/${card.id}`);
   };
-  console.log('POSTER_IMG_URL', POSTER_IMG_URL);
   return (
     <CardWrapper key={card.id} onClick={handleClick}>
       <ImageWrapper>
