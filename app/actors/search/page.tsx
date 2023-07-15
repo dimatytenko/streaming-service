@@ -1,4 +1,4 @@
-import {ActorsWrapper, StyledTitle} from '../styles';
+import {ItemsWrapper, StyledTitle} from '@/app/styles';
 import {SearchActors} from '@/components/Actors/SearchActors';
 
 export const metadata = {
@@ -15,9 +15,9 @@ type Props = {
 
 export default function ActorsToday({searchParams: {query, page}}: Props) {
   return (
-    <ActorsWrapper>
+    <ItemsWrapper>
       <StyledTitle>Results of search</StyledTitle>
       <SearchActors query={query} page={page || 1} />
-    </ActorsWrapper>
+    </ItemsWrapper>
   );
 }
