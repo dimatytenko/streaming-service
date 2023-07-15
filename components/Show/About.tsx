@@ -21,9 +21,7 @@ export const AboutShow: React.FC<Props> = ({show}) => {
           <StyledText>Created by:</StyledText>
           <AboutItemsWrapper>
             {show.created_by.map((item) => (
-              <StyledTextItem target={'_blank'} key={item.id}>
-                {item.name}
-              </StyledTextItem>
+              <StyledTextItem key={item.id}>{item.name}</StyledTextItem>
             ))}
           </AboutItemsWrapper>
         </AboutItemWrapper>
