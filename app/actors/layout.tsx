@@ -1,6 +1,6 @@
 import {PropsWithChildren} from 'react';
 
-import {LayoutWrapper, LayoutContent, SearchWrapper} from './styles';
+import {LayoutWrapper, LayoutContent, SearchWrapper} from '@/app/styles';
 import {SearchComponent} from '@/components/Search/Search';
 import {ActorsPaths} from '@/constants/common';
 

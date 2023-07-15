@@ -1,5 +1,5 @@
 import {TimeFrame} from '@/constants/common';
-import {ActorsWrapper, StyledTitle} from '../styles';
+import {ItemsWrapper, StyledTitle} from '@/app/styles';
 import {Actors} from '@/components/Actors/Actors';
 
 export const metadata = {
@@ -9,9 +9,9 @@ export const metadata = {
 
 export default function ActorsWeek() {
   return (
-    <ActorsWrapper>
+    <ItemsWrapper>
       <StyledTitle>Most trending actors in the last week</StyledTitle>
       <Actors timeFrame={TimeFrame.WEEK} />
-    </ActorsWrapper>
+    </ItemsWrapper>
   );
 }

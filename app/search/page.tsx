@@ -1,6 +1,6 @@
 import {GlobalSearchContent} from '@/components/Search/GlobalSearchContent';
 import {GlobalSearchNav} from '@/components/Search/GlobalSearchNav';
-import {SearchPageWrapper} from '../actors/styles';
+import {SearchPageWrapper} from '@/app/styles';
 
 export const metadata = {
   title: 'Streaming service | Search',

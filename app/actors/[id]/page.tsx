@@ -1,6 +1,6 @@
 import {getActorById, getActorMovies, getActorTvShows, getActorImages} from '@/services/actors';
 import {ActorsCardContent} from '@/components/Actors/Actor';
-import {ActorsWrapper} from '../styles';
+import {ItemsWrapper} from '@/app/styles';
 import {ActorTabs} from '@/components/Card/ActorTabs';
 
 type Props = {
@@ -22,9 +22,9 @@ export default async function Movie({params: {id}}: Props) {
   const images = await getActorImages(id);
 
   return (
-    <ActorsWrapper>
+    <ItemsWrapper>
       <ActorsCardContent card={actor} />
       <ActorTabs title={'Info'} movies={movies} shows={tvShows} images={images} />
-    </ActorsWrapper>
+    </ItemsWrapper>
   );
 }

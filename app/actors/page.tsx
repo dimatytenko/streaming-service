@@ -1,4 +1,4 @@
-import {ActorsWrapper, PaginationWrapper, StyledTitle} from './styles';
+import {ItemsWrapper, PaginationWrapper, StyledTitle} from '@/app/styles';
 import {ActorsCardContent} from '@/components/Actors/Actor';
 import {ITrendingActors} from '@/types/actors';
 import {Pagination} from '@/components/Pagination';
@@ -20,7 +20,7 @@ export default async function ActorsAll({searchParams: {page}}: Props) {
   const data = await getAllActors(page || 1);
 
   return (
-    <ActorsWrapper>
+    <ItemsWrapper>
       <StyledTitle>Most trending actors</StyledTitle>
       <CardsWrapper>
         {data?.results?.map((card: ITrendingActors) => (
@@ -30,6 +30,6 @@ export default async function ActorsAll({searchParams: {page}}: Props) {
       <PaginationWrapper>
         <Pagination data={data} />
       </PaginationWrapper>
-    </ActorsWrapper>
+    </ItemsWrapper>
   );
 }

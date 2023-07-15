@@ -22,3 +22,12 @@ export enum MediaTypes {
   PERSON = 'person',
   TV = 'tv',
 }
+
+export enum ShowPaths {
+  SHOWS = '/tv',
+  TODAY = '/tv/today',
+  WEEK = '/tv/week',
+  TOP_RATED = '/tv/top-rated',
+  ON_THE_AIR = '/tv/on-the-air',
+  AIRING_TODAY = '/tv/airing-today',
+}

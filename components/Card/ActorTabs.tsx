@@ -1,10 +1,11 @@
 'use client';
-import {POSTER_IMG_URL} from '@/constants/api';
-import {CardVariants} from '@/constants/common';
-import {Progress, Typography, Badge} from 'antd';
 import {useState} from 'react';
+import {useRouter} from 'next/navigation';
 import Image from 'next/image';
+import {Progress, Typography, Badge} from 'antd';
 
+import {POSTER_IMG_URL} from '@/constants/api';
+import {CardVariants, ShowPaths} from '@/constants/common';
 import {
   CardSubTitleText,
   ContentElementWrapper,
@@ -91,7 +92,7 @@ const FilmCardsContent: React.FC<ActorMoviesProps> = ({data}) => {
               <Badge count={Math.round(d.popularity || 1)} color="#059d2f" overflowCount={10000} />
             </InnerCardContentWrapper>
             <InnerCardContentWrapper>
-              <CardSubTitleText>Cote count:</CardSubTitleText>
+              <CardSubTitleText>Vote count:</CardSubTitleText>
               <Badge count={Math.round(d.vote_count || 1)} color="#000" overflowCount={10000} />
             </InnerCardContentWrapper>
           </ContentElementWrapper>
@@ -105,12 +106,16 @@ type ActorShowsProps = {
 };
 
 const ShowCardsContent: React.FC<ActorShowsProps> = ({data}) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`${ShowPaths.SHOWS}/${data.id}`);
+  };
   return (
     <>
       {data.cast
         .filter((i) => i.poster_path)
         .map((d) => (
-          <ContentElementWrapper key={d.poster_path}>
+          <ContentElementWrapper key={d.poster_path} onClick={handleClick}>
             <ImageWrapper>
               <ImageActive>
                 <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={220} height={330} alt="show poster" />
