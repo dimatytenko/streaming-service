@@ -17,7 +17,7 @@ export const getTrendingShows = async (timeFrame: string, page?: number): Promis
 };
 
 export const getAiringTodayShows = async (page?: number): Promise<IShowsData> => {
-  const res = await fetch(`${API_URL}/tv/airing_today/?page=${page || 1}&api_key=${API_KEY}`);
+  const res = await fetch(`${API_URL}/tv/airing_today?page=${page || 1}&api_key=${API_KEY}`);
 
   if (!res.ok) throw new Error('Unable to fetch TV shows.');
 
@@ -25,7 +25,7 @@ export const getAiringTodayShows = async (page?: number): Promise<IShowsData> =>
 };
 
 export const getTopRatedShows = async (page?: number): Promise<IShowsData> => {
-  const res = await fetch(`${API_URL}/tv/top_rated/?page=${page || 1}&api_key=${API_KEY}`);
+  const res = await fetch(`${API_URL}/tv/top_rated?page=${page || 1}&api_key=${API_KEY}`);
 
   if (!res.ok) throw new Error('Unable to fetch TV shows.');
 
@@ -33,7 +33,7 @@ export const getTopRatedShows = async (page?: number): Promise<IShowsData> => {
 };
 
 export const getOnTheAirShows = async (page?: number): Promise<IShowsData> => {
-  const res = await fetch(`${API_URL}/tv/on_the_air/?page=${page || 1}&api_key=${API_KEY}`);
+  const res = await fetch(`${API_URL}/tv/on_the_air?page=${page || 1}&api_key=${API_KEY}`);
 
   if (!res.ok) throw new Error('Unable to fetch TV shows.');
 
