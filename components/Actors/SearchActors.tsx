@@ -6,7 +6,7 @@ import {ActorsCardContent} from '@/components/Actors/Actor';
 import {CardsWrapper} from './styles';
 import {ITrendingActorsData} from '@/types/actors';
 import {Pagination} from '@/components/Pagination';
-import {PaginationWrapper} from '@/app/actors/styles';
+import {PaginationWrapper} from '@/app/styles';
 import {PageLoader} from '@/components/Loader';
 import {NothingFound} from '../404/NothingFound';
 
