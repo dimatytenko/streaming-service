@@ -46,6 +46,7 @@ export const GlobalSearchContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 100%;
 `;
 
 export const StyledSpan = styled.span`

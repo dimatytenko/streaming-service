@@ -1,14 +1,19 @@
-import {MediaTypes} from '@/constants/common';
+import {MediaTypes, SearchTypes} from '@/constants/common';
 import {ITrendingActors} from './actors';
+import {IKeywords, ICollections, ICompanies} from './data';
 import {IMovies} from './movies';
 import {IShows} from './shows';
 
-export interface ISearchData {
+export interface ISearchData<T = SearchResType> {
   page: number;
-  results: ITrendingActors[] | IMovies[] | IShows[];
+  results: T;
   total_pages: number;
   total_results: number;
 }
+
+export type GlobalSearchResType = ITrendingActors[] | IMovies[] | IShows[];
+export type SpecificSearchResType = IKeywords[] | ICollections[] | ICompanies[];
+export type SearchResType = GlobalSearchResType & SpecificSearchResType;
 
 export interface ISearchContent {
   id: number;
@@ -16,5 +21,5 @@ export interface ISearchContent {
   subtitle: string;
   description: string;
   image: string;
-  type: MediaTypes;
+  type: MediaTypes | SearchTypes;
 }

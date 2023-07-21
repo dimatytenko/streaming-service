@@ -39,7 +39,14 @@ export const LayoutWrapper = styled.div`
   flex-direction: column;
   padding: 24px 0;
 `;
-export const LayoutContent = styled.div``;
+
+export const SearchLayoutWrapper = styled(LayoutWrapper)`
+  flex-direction: row;
+`;
+
+export const LayoutContent = styled.div`
+  width: 100%;
+`;
 
 export const ItemsWrapper = styled.div`
   display: flex;

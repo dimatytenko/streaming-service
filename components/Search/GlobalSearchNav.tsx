@@ -1,7 +1,9 @@
 'use client';
 
 import {searchNavItems} from '@/constants/common';
+import {updateSearchParam} from '@/helpers/common';
 import {Menu, MenuProps} from 'antd';
+import {usePathname, useRouter, useSearchParams} from 'next/navigation';
 import {SearchNavCard} from './styles';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -16,8 +18,13 @@ const getItem = (label: React.ReactNode, key: React.Key): MenuItem => {
 const items: MenuProps['items'] = searchNavItems.map((item, i) => getItem(item, i));
 
 export const GlobalSearchNav: React.FC = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
   const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e);
+    const newParamValue = searchNavItems[+e.key].toLowerCase().replace(/\s/g, '');
+    const updatedSearchParams = updateSearchParam(searchParams, 'filter', newParamValue);
+    router.push(`${pathName}?${updatedSearchParams.toString()}`, {shallow: true});
   };
 
   return (

@@ -1,6 +1,6 @@
 import {GlobalSearchContent} from '@/components/Search/GlobalSearchContent';
-import {GlobalSearchNav} from '@/components/Search/GlobalSearchNav';
 import {SearchPageWrapper} from '@/app/styles';
+import {SearchFilters} from '@/constants/common';
 
 export const metadata = {
   title: 'Streaming service | Search',
@@ -11,14 +11,14 @@ type Props = {
   searchParams: {
     query: string;
     page: number;
+    filter: SearchFilters;
   };
 };
 
-export default function Search({searchParams: {query, page}}: Props) {
+export default function Search({searchParams: {query, page, filter}}: Props) {
   return (
     <SearchPageWrapper>
-      <GlobalSearchNav />
-      <GlobalSearchContent query={query} page={page || 1} />
+      <GlobalSearchContent query={query} page={page || 1} filter={filter} />
     </SearchPageWrapper>
   );
 }
