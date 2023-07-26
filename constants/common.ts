@@ -47,3 +47,9 @@ export enum SearchFilters {
   COLLECTIONS = 'collections',
   COMPANIES = 'companies',
 }
+
+// export enum AuthStatus {
+//   AUTHENTICATED = 'authenticated',
+//   UNAUTHENTICATED = 'unauthenticated',
+//   LOADING = 'loading',
+// }

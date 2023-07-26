@@ -2,16 +2,37 @@
 import {Dropdown} from 'antd';
 import type {MenuProps} from 'antd';
 import Link from 'next/link';
-import {MenuLink, MenuWrapper, MenuMoreLink} from './styles';
+import Image from 'next/image';
+import {useSession, signOut} from 'next-auth/react';
+import {MenuLink, MenuWrapper, MenuMoreLink, StyledSpan, AuthElementWrapper} from './styles';
 import {ActorsPaths, ShowPaths} from '@/constants/common';
 
 export const Navigation = () => {
+  const session = useSession();
+  console.log('session', session);
   return (
     <MenuWrapper>
       <MenuLink href="/movies">Movies</MenuLink>
       <ShowsMenuMore />
       <ActorsMenuMore />
-      <MenuLink href="/auth">Log in</MenuLink>
+      {session?.data ? (
+        <AuthElementWrapper>
+          <MenuLink href="/profile">
+            <Image
+              style={{borderRadius: '8px'}}
+              src={session?.data?.user!.image!}
+              width={40}
+              height={40}
+              alt="user logo"
+            />
+          </MenuLink>
+          <MenuLink href="#" onClick={() => signOut({callbackUrl: '/'})}>
+            <StyledSpan>Log out</StyledSpan>
+          </MenuLink>
+        </AuthElementWrapper>
+      ) : (
+        <MenuLink href="/auth">Log in</MenuLink>
+      )}
     </MenuWrapper>
   );
 };

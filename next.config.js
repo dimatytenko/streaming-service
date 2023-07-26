@@ -12,6 +12,12 @@ const nextConfig = {
         port: '',
         pathname: '/t/p/w220_and_h330_face/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/a/**',
+      },
     ],
   },
 };

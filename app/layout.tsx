@@ -8,6 +8,7 @@ import {Main} from './styles';
 import {ThemeWrapper} from './themeWrapper';
 import {RootStyleRegistry} from './rootStyleRegistry';
 import {Container} from '@/app/styles';
+import {SessionWrapper} from './sessionWrapper';
 
 const lato = Lato({subsets: ['latin'], weight: ['300', '400', '700']});
 
@@ -20,15 +21,17 @@ export default function RootLayout({children}: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={lato.className}>
-        <ThemeWrapper>
-          <RootStyleRegistry>
-            <Header />
-            <Main>
-              <Container>{children}</Container>
-            </Main>
-            <Footer />
-          </RootStyleRegistry>
-        </ThemeWrapper>
+        <SessionWrapper>
+          <ThemeWrapper>
+            <RootStyleRegistry>
+              <Header />
+              <Main>
+                <Container>{children}</Container>
+              </Main>
+              <Footer />
+            </RootStyleRegistry>
+          </ThemeWrapper>
+        </SessionWrapper>
       </body>
     </html>
   );
