@@ -11,7 +11,6 @@ export default function StyledComponentsRegistry({children}: {children: React.Re
 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     styledComponentsStyleSheet.instance.clearTag();
     return styles;
