@@ -3,38 +3,30 @@ import {useEffect, useState} from 'react';
 import {FloatButton} from 'antd';
 
 import {CardsWrapper, StyledButton} from '@/components/styles';
-import {ShowPaths, TimeFrame} from '@/constants/common';
+import {TimeFrame} from '@/constants/common';
 import {PageLoader} from '@/components/Loader';
-import {IShows} from '@/types/shows';
-import {getAiringTodayShows, getOnTheAirShows, getTopRatedShows, getTrendingShows} from '@/services/shows';
-import {ShowCard} from '@/components/Show/Show';
+import {MovieCard} from '@/components/Movie/Movie';
+import {IMovies} from '@/types/movies';
+import {getTrendingMovies} from '@/services/movies';
 
 type Props = {
   timeFrame?: TimeFrame;
-  type?: ShowPaths;
 };
 
-export const Shows: React.FC<Props> = ({timeFrame, type}) => {
+export const Movies: React.FC<Props> = ({timeFrame}) => {
   const [page, setPage] = useState(1);
-  const [shows, setShows] = useState<IShows[] | []>([]);
+  const [movies, setMovies] = useState<IMovies[] | []>([]);
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const getData = async (page: number) => {
     try {
       setIsLoading(true);
-      const data =
-        type === ShowPaths.AIRING_TODAY
-          ? await getAiringTodayShows(page)
-          : type === ShowPaths.ON_THE_AIR
-          ? await getOnTheAirShows(page)
-          : type === ShowPaths.TOP_RATED
-          ? await getTopRatedShows(page)
-          : await getTrendingShows(timeFrame || TimeFrame.DAY, page);
-      if (!!shows.length) {
-        setShows((prev) => [...prev, ...data.results]);
+      const data = await getTrendingMovies(timeFrame || TimeFrame.DAY, page);
+      if (!!movies.length) {
+        setMovies((prev) => [...prev, ...data.results]);
       } else {
-        setShows(data.results);
+        setMovies(data.results);
       }
     } catch (e) {
       console.log(e);
@@ -59,8 +51,8 @@ export const Shows: React.FC<Props> = ({timeFrame, type}) => {
   return (
     <>
       <CardsWrapper>
-        {shows.map((card) => (
-          <ShowCard key={card.id} card={card} />
+        {movies.map((card) => (
+          <MovieCard key={card.id} card={card} />
         ))}
       </CardsWrapper>
       <StyledButton type="primary" onClick={handleLoadMore} loading={isLoading}>

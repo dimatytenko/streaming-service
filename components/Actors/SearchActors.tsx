@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 
 import {getBySearch} from '@/services/actors';
 import {ActorsCardContent} from '@/components/Actors/Actor';
-import {CardsWrapper} from './styles';
+import {CardsWrapper} from '@/components/styles';
 import {ITrendingActorsData} from '@/types/actors';
 import {Pagination} from '@/components/Pagination';
 import {PaginationWrapper} from '@/app/styles';

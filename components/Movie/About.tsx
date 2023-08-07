@@ -1,4 +1,3 @@
-import {IShows} from '@/types/shows';
 import {
   StyledTitle,
   StyledText,
@@ -8,117 +7,102 @@ import {
   StyledLink,
   AboutWrapper,
 } from '@/components/styles';
+import {IMovies} from '@/types/movies';
 
 type Props = {
-  show: IShows;
+  movie: IMovies;
 };
-export const AboutShow: React.FC<Props> = ({show}) => {
+export const AboutMovie: React.FC<Props> = ({movie}) => {
   return (
     <AboutWrapper>
-      <StyledTitle>About Show</StyledTitle>
-      {!!show?.created_by?.length && (
+      <StyledTitle>About {movie.title}</StyledTitle>
+      {!!movie?.budget && (
+        <AboutItemWrapper>
+          <StyledText>Budget:</StyledText>
+          <StyledTextItem>{movie.budget}</StyledTextItem>
+        </AboutItemWrapper>
+      )}
+      {!!movie?.created_by?.length && (
         <AboutItemWrapper>
           <StyledText>Created by:</StyledText>
           <AboutItemsWrapper>
-            {show.created_by.map((item) => (
+            {movie.created_by.map((item) => (
               <StyledTextItem key={item.id}>{item.name}</StyledTextItem>
             ))}
           </AboutItemsWrapper>
         </AboutItemWrapper>
       )}
-      {!!show?.genres?.length && (
+      {!!movie?.genres?.length && (
         <AboutItemWrapper>
           <StyledText>Genres:</StyledText>
           <AboutItemsWrapper>
-            {show.genres.map((item) => (
+            {movie.genres.map((item) => (
               <StyledTextItem key={item.id}>{item.name}</StyledTextItem>
             ))}
           </AboutItemsWrapper>
         </AboutItemWrapper>
       )}
-      {!!show?.homepage && (
+      {!!movie?.homepage && (
         <AboutItemWrapper>
           <StyledText>Home page:</StyledText>
-          <StyledLink href={show.homepage} target={'_blank'}>
-            {show.name}
+          <StyledLink href={movie.homepage} target={'_blank'}>
+            {movie.title}
           </StyledLink>
         </AboutItemWrapper>
       )}
-      {!!show?.first_air_date && (
+      {!!movie?.imdb_id && (
         <AboutItemWrapper>
-          <StyledText>First air date:</StyledText>
-          <StyledTextItem>{show.first_air_date}</StyledTextItem>
+          <StyledText>Imdb page:</StyledText>
+          <StyledLink href={`https://www.imdb.com/title/${movie.imdb_id}`} target={'_blank'}>
+            {movie.title}
+          </StyledLink>
         </AboutItemWrapper>
       )}
-      {!!show?.last_air_date && (
-        <AboutItemWrapper>
-          <StyledText>Last air date:</StyledText>
-          <StyledTextItem>{show.last_air_date}</StyledTextItem>
-        </AboutItemWrapper>
-      )}
-      {!!show?.number_of_episodes && (
-        <AboutItemWrapper>
-          <StyledText>Number of episodes:</StyledText>
-          <StyledTextItem>{show.number_of_episodes}</StyledTextItem>
-        </AboutItemWrapper>
-      )}
-      {!!show?.number_of_seasons && (
-        <AboutItemWrapper>
-          <StyledText>Number of seasons:</StyledText>
-          <StyledTextItem>{show.number_of_seasons}</StyledTextItem>
-        </AboutItemWrapper>
-      )}
-      {!!show?.overview && (
+      {!!movie?.overview && (
         <AboutItemWrapper>
           <StyledText>Overview:</StyledText>
-          <StyledTextItem>{show.overview}</StyledTextItem>
+          <StyledTextItem>{movie.overview}</StyledTextItem>
         </AboutItemWrapper>
       )}
-      {!!show?.production_companies?.length && (
+      {!!movie?.production_companies?.length && (
         <AboutItemWrapper>
           <StyledText>Production companies:</StyledText>
           <AboutItemsWrapper>
-            {show.production_companies.map((item) => (
+            {movie.production_companies.map((item) => (
               <StyledTextItem key={item.id}>{item.name}</StyledTextItem>
             ))}
           </AboutItemsWrapper>
         </AboutItemWrapper>
       )}
-      {!!show?.production_countries?.length && (
+      {!!movie?.production_countries?.length && (
         <AboutItemWrapper>
           <StyledText>Production countries:</StyledText>
           <AboutItemsWrapper>
-            {show.production_countries.map((item) => (
+            {movie.production_countries.map((item) => (
               <StyledTextItem key={item.name}>{item.name}</StyledTextItem>
             ))}
           </AboutItemsWrapper>
         </AboutItemWrapper>
       )}
-      {!!show?.spoken_languages?.length && (
+      {!!movie?.spoken_languages?.length && (
         <AboutItemWrapper>
           <StyledText>Spoken languages:</StyledText>
           <AboutItemsWrapper></AboutItemsWrapper>
-          {show.spoken_languages.map((item) => (
+          {movie.spoken_languages.map((item) => (
             <StyledTextItem key={item.name}>{item.name}</StyledTextItem>
           ))}
         </AboutItemWrapper>
       )}
-      {!!show?.status?.length && (
+      {!!movie?.status?.length && (
         <AboutItemWrapper>
           <StyledText>Status:</StyledText>
-          <StyledTextItem>{show.status}</StyledTextItem>
+          <StyledTextItem>{movie.status}</StyledTextItem>
         </AboutItemWrapper>
       )}{' '}
-      {!!show?.tagline?.length && (
+      {!!movie?.tagline?.length && (
         <AboutItemWrapper>
           <StyledText>Tagline:</StyledText>
-          <StyledTextItem>{show.tagline}</StyledTextItem>
-        </AboutItemWrapper>
-      )}{' '}
-      {!!show?.type?.length && (
-        <AboutItemWrapper>
-          <StyledText>Type:</StyledText>
-          <StyledTextItem>{show.type}</StyledTextItem>
+          <StyledTextItem>{movie.tagline}</StyledTextItem>
         </AboutItemWrapper>
       )}
     </AboutWrapper>

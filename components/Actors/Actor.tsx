@@ -4,8 +4,8 @@ import {Badge, Typography} from 'antd';
 import Image from 'next/image';
 
 import {POSTER_IMG_URL} from '@/constants/api';
-import {CardWrapper, ImageWrapper, ContentWrapper, StyledTitle, StyledText, InnerCardContentWrapper} from './styles';
-import {ActorsCardContentProps} from './types';
+import {CardWrapper, ImageWrapper, ContentWrapper, StyledTitle, StyledText, InnerCardContentWrapper} from '../styles';
+import {ActorsCardContentProps} from '@/components/Actors/types';
 import noPhoto from '@/assets/No_image_available.png';
 import {ActorsPaths} from '@/constants/common';
 

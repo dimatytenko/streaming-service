@@ -3,7 +3,7 @@ import {ActorsCardContent} from '@/components/Actors/Actor';
 import {ITrendingActors} from '@/types/actors';
 import {Pagination} from '@/components/Pagination';
 import {getAllActors} from '@/services/actors';
-import {CardsWrapper} from '@/components/Actors/styles';
+import {CardsWrapper} from '@/components/styles';
 
 export const metadata = {
   title: 'Streaming service | Actors',

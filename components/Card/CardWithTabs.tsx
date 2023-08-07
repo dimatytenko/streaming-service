@@ -1,6 +1,8 @@
 'use client';
+import {useRouter} from 'next/navigation';
+
 import {POSTER_IMG_URL} from '@/constants/api';
-import {CardVariants} from '@/constants/common';
+import {CardVariants, MoviesPaths} from '@/constants/common';
 import {ICardWithTabs} from '@/types/data';
 import {Progress, Typography} from 'antd';
 import {useState} from 'react';
@@ -32,20 +34,22 @@ type CardWithTabsProps = {
   title: string;
   dayData: ICardWithTabs[];
   weekData: ICardWithTabs[];
+  path: string;
 };
 
 type CardContentProps = {
   data: ICardWithTabs[];
+  path: string;
 };
 
-export const CardWithTabs: React.FC<CardWithTabsProps> = ({title, dayData, weekData}) => {
+export const CardWithTabs: React.FC<CardWithTabsProps> = ({title, dayData, weekData, path}) => {
   const [activeTabKey, setActiveTabKey] = useState<string>(tabList[0].key);
   const onTabChange = (key: string) => {
     setActiveTabKey(key);
   };
   const contentList: Record<string, React.ReactNode> = {
-    tab1: <CardContent data={dayData.slice(0, 7)} />,
-    tab2: <CardContent data={weekData.slice(0, 7)} />,
+    tab1: <CardContent data={dayData.slice(0, 7)} path={path} />,
+    tab2: <CardContent data={weekData.slice(0, 7)} path={path} />,
   };
 
   return (
@@ -61,11 +65,16 @@ export const CardWithTabs: React.FC<CardWithTabsProps> = ({title, dayData, weekD
   );
 };
 
-const CardContent: React.FC<CardContentProps> = ({data}) => {
+const CardContent: React.FC<CardContentProps> = ({data, path}) => {
+  const router = useRouter();
+  const handleClick = (id: number) => {
+    router.push(`${path}/${id}`);
+  };
+
   return (
     <>
       {data.map((d) => (
-        <ContentElementWrapper key={d.id}>
+        <ContentElementWrapper key={d.id} onClick={() => handleClick(d.id)}>
           <ImageWrapper>
             <ImageActive>
               <Image src={`${POSTER_IMG_URL}${d.image}`} width={220} height={330} alt="film poster" />

@@ -2,7 +2,7 @@
 import {useState, useEffect} from 'react';
 import {FloatButton} from 'antd';
 
-import {CardsWrapper, StyledButton} from './styles';
+import {CardsWrapper, StyledButton} from '@/components/styles';
 import {ActorsCardContent} from '@/components/Actors/Actor';
 import {ITrendingActors} from '@/types/actors';
 import {getActors} from '@/services/actors';

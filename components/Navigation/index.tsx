@@ -5,14 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {useSession, signOut} from 'next-auth/react';
 import {MenuLink, MenuWrapper, MenuMoreLink, StyledSpan, AuthElementWrapper} from './styles';
-import {ActorsPaths, ShowPaths} from '@/constants/common';
+import {ActorsPaths, MoviesPaths, ShowPaths} from '@/constants/common';
 
 export const Navigation = () => {
   const session = useSession();
   console.log('session', session);
   return (
     <MenuWrapper>
-      <MenuLink href="/movies">Movies</MenuLink>
+      <MoviesMenuMore />
       <ShowsMenuMore />
       <ActorsMenuMore />
       {session?.data ? (
@@ -91,6 +91,29 @@ export const ShowsMenuMore = () => {
   return (
     <Dropdown menu={{items}} trigger={['hover']}>
       <MenuMoreLink>TV Shows</MenuMoreLink>
+    </Dropdown>
+  );
+};
+
+export const MoviesMenuMore = () => {
+  const items: MenuProps['items'] = [
+    {
+      key: 1,
+      label: <Link href={MoviesPaths.MOVIES}>Popular</Link>,
+    },
+    {
+      key: 2,
+      label: <Link href={MoviesPaths.TODAY}>Popular today</Link>,
+    },
+    {
+      key: 3,
+      label: <Link href={MoviesPaths.WEEK}>Popular this week</Link>,
+    },
+  ];
+
+  return (
+    <Dropdown menu={{items}} trigger={['hover']}>
+      <MenuMoreLink>Movies</MenuMoreLink>
     </Dropdown>
   );
 };
