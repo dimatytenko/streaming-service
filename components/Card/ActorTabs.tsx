@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {Progress, Typography, Badge} from 'antd';
 
 import {POSTER_IMG_URL} from '@/constants/api';
-import {CardVariants, ShowPaths} from '@/constants/common';
+import {CardVariants, MoviesPaths, ShowPaths} from '@/constants/common';
 import {
   CardSubTitleText,
   ContentElementWrapper,
@@ -70,12 +70,16 @@ type ActorMoviesProps = {
 };
 
 const FilmCardsContent: React.FC<ActorMoviesProps> = ({data}) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`${MoviesPaths.MOVIES}/${data.id}`);
+  };
   return (
     <>
       {data.cast
         .filter((i) => i.poster_path)
         .map((d) => (
-          <ContentElementWrapper key={d.id}>
+          <ContentElementWrapper key={d.id} onClick={handleClick}>
             <ImageWrapper>
               <ImageActive>
                 <Image src={`${POSTER_IMG_URL}${d.poster_path}`} width={220} height={330} alt="film poster" />

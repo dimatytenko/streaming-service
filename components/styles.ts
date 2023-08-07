@@ -57,6 +57,12 @@ export const StyledText = styled.h6`
   margin-right: 10px;
 `;
 
+export const StyledTextItem = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  color: ${({theme}) => theme.palette.dark.secondary};
+`;
+
 export const StyledButton = styled(Button)`
   margin: 24px auto 0;
   width: 200px;
@@ -66,4 +72,34 @@ export const StyledButton = styled(Button)`
 export const InnerCardContentWrapper = styled.div`
   display: flex;
   align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+`;
+
+export const AboutWrapper = styled.div`
+  max-width: 800px;
+`;
+
+export const AboutItemWrapper = styled.div`
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+`;
+
+export const AboutItemsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+export const StyledLink = styled.a`
+  color: ${({theme}) => theme.palette.light.blue};
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 500ms ease;
+
+  &:hover {
+    color: ${({theme}) => theme.palette.dark.secondary};
+    text-decoration: underline;
+  }
 `;

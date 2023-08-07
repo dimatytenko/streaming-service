@@ -2,7 +2,7 @@ import {ItemsWrapper, PaginationWrapper, StyledTitle} from '@/app/styles';
 import {IShows} from '@/types/shows';
 import {Pagination} from '@/components/Pagination';
 import {getPopularShows} from '@/services/shows';
-import {CardsWrapper} from '@/components/Actors/styles';
+import {CardsWrapper} from '@/components/styles';
 import {ShowCard} from '@/components/Show/Show';
 export const metadata = {
   title: 'Streaming service | TV Shows',
@@ -20,7 +20,7 @@ export default async function TvShowsPopular({searchParams: {page}}: Props) {
 
   return (
     <ItemsWrapper>
-      <StyledTitle>Most trending tv shows</StyledTitle>
+      <StyledTitle>Most popular tv shows</StyledTitle>
       <CardsWrapper>
         {data?.results.map((card: IShows) => (
           <ShowCard key={card.id} card={card} />

@@ -16,9 +16,8 @@ export const generateMetadata = ({params: {id}}: Props) => {
   };
 };
 
-export default async function Movie({params: {id}}: Props) {
+export default async function Show({params: {id}}: Props) {
   const show = await getShowDetails(id);
-  console.log('show', show);
 
   return (
     <ItemsWrapper>

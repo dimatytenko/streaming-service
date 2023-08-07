@@ -1,6 +1,6 @@
 import {Card} from '@/components/Card/Card';
 import {CardWithTabs} from '@/components/Card/CardWithTabs';
-import {TimeFrame} from '@/constants/common';
+import {MoviesPaths, TimeFrame, ShowPaths} from '@/constants/common';
 import {toCardStateMovies, toCardStateShows} from '@/helpers/data';
 import {getTrendingMovies, getUpcomingMovies} from '@/services/movies';
 import {getAiringTodayShows, getTrendingShows} from '@/services/shows';
@@ -23,16 +23,26 @@ export default async function Home() {
   return (
     <HomeWrapper>
       <CardWrapper>
-        <CardWithTabs title="Most trending movies" dayData={dayMoviesData} weekData={weekMoviesData} />
+        <CardWithTabs
+          title="Most trending movies"
+          dayData={dayMoviesData}
+          weekData={weekMoviesData}
+          path={MoviesPaths.MOVIES}
+        />
       </CardWrapper>
       <CardWrapper>
-        <Card title="Upcoming soon" data={upcomingMoviesData} />
+        <Card title="Upcoming soon" data={upcomingMoviesData} path={MoviesPaths.MOVIES} />
       </CardWrapper>
       <CardWrapper>
-        <CardWithTabs title="Most trending TV Shows" dayData={dayShowsData} weekData={weekShowsData} />
+        <CardWithTabs
+          title="Most trending TV Shows"
+          dayData={dayShowsData}
+          weekData={weekShowsData}
+          path={ShowPaths.SHOWS}
+        />
       </CardWrapper>
       <CardWrapper>
-        <Card title="TV Shows airing today" data={airingTodayShowsData} />
+        <Card title="TV Shows airing today" data={airingTodayShowsData} path={ShowPaths.SHOWS} />
       </CardWrapper>
     </HomeWrapper>
   );

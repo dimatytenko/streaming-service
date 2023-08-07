@@ -48,6 +48,13 @@ export enum SearchFilters {
   COMPANIES = 'companies',
 }
 
+export enum MoviesPaths {
+  MOVIES = '/movies',
+  TODAY = '/movies/today',
+  WEEK = '/movies/week',
+  SEARCH = '/movies/search',
+}
+
 // export enum AuthStatus {
 //   AUTHENTICATED = 'authenticated',
 //   UNAUTHENTICATED = 'unauthenticated',
