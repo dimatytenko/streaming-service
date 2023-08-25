@@ -19,7 +19,21 @@ export const AboutMovie: React.FC<Props> = ({movie}) => {
       {!!movie?.budget && (
         <AboutItemWrapper>
           <StyledText>Budget:</StyledText>
-          <StyledTextItem>{movie.budget}</StyledTextItem>
+          <StyledTextItem>
+            $
+            {movie.budget
+              .toString()
+              .split('')
+              .reverse()
+              .map((w, i) => {
+                if (i % 3 === 0) {
+                  return w + ',';
+                } else {
+                  return w;
+                }
+              })
+              .reverse()}
+          </StyledTextItem>
         </AboutItemWrapper>
       )}
       {!!movie?.created_by?.length && (
@@ -87,10 +101,11 @@ export const AboutMovie: React.FC<Props> = ({movie}) => {
       {!!movie?.spoken_languages?.length && (
         <AboutItemWrapper>
           <StyledText>Spoken languages:</StyledText>
-          <AboutItemsWrapper></AboutItemsWrapper>
-          {movie.spoken_languages.map((item) => (
-            <StyledTextItem key={item.name}>{item.name}</StyledTextItem>
-          ))}
+          <AboutItemsWrapper>
+            {movie.spoken_languages.map((item) => (
+              <StyledTextItem key={item.name}>{item.name}</StyledTextItem>
+            ))}
+          </AboutItemsWrapper>
         </AboutItemWrapper>
       )}
       {!!movie?.status?.length && (

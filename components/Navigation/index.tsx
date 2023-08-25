@@ -9,29 +9,34 @@ import {ActorsPaths, MoviesPaths, ShowPaths} from '@/constants/common';
 
 export const Navigation = () => {
   const session = useSession();
-  console.log('session', session);
+  // console.log('session', session);
+  const isHidden = true;
   return (
     <MenuWrapper>
       <MoviesMenuMore />
       <ShowsMenuMore />
       <ActorsMenuMore />
-      {session?.data ? (
-        <AuthElementWrapper>
-          <MenuLink href="/profile">
-            <Image
-              style={{borderRadius: '8px'}}
-              src={session?.data?.user!.image!}
-              width={40}
-              height={40}
-              alt="user logo"
-            />
-          </MenuLink>
-          <MenuLink href="#" onClick={() => signOut({callbackUrl: '/'})}>
-            <StyledSpan>Log out</StyledSpan>
-          </MenuLink>
-        </AuthElementWrapper>
-      ) : (
-        <MenuLink href="/auth">Log in</MenuLink>
+      {!isHidden && (
+        <>
+          {session?.data ? (
+            <AuthElementWrapper>
+              <MenuLink href="/profile">
+                <Image
+                  style={{borderRadius: '8px'}}
+                  src={session?.data?.user!.image!}
+                  width={40}
+                  height={40}
+                  alt="user logo"
+                />
+              </MenuLink>
+              <MenuLink href="#" onClick={() => signOut({callbackUrl: '/'})}>
+                <StyledSpan>Log out</StyledSpan>
+              </MenuLink>
+            </AuthElementWrapper>
+          ) : (
+            <MenuLink href="/auth">Log in</MenuLink>
+          )}
+        </>
       )}
     </MenuWrapper>
   );

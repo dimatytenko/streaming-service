@@ -97,10 +97,11 @@ export const AboutShow: React.FC<Props> = ({show}) => {
       {!!show?.spoken_languages?.length && (
         <AboutItemWrapper>
           <StyledText>Spoken languages:</StyledText>
-          <AboutItemsWrapper></AboutItemsWrapper>
-          {show.spoken_languages.map((item) => (
-            <StyledTextItem key={item.name}>{item.name}</StyledTextItem>
-          ))}
+          <AboutItemsWrapper>
+            {show.spoken_languages.map((item) => (
+              <StyledTextItem key={item.name}>{item.name}</StyledTextItem>
+            ))}
+          </AboutItemsWrapper>
         </AboutItemWrapper>
       )}
       {!!show?.status?.length && (
