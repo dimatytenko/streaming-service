@@ -1,29 +1,88 @@
-import {AuthOptions, User} from 'next-auth';
+import NextAuth from 'next-auth';
+import type {NextAuthOptions} from 'next-auth';
+import bcrypt from 'bcryptjs';
+import {MongoDBAdapter} from '@next-auth/mongodb-adapter';
 import GoogleProvider from 'next-auth/providers/google';
-import Credentials from 'next-auth/providers/credentials';
-import {users} from '@/mockData/users';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import dbConnect from './dbConnect';
+import clientPromise from './clientPromise';
+import User from '@/models/User';
 
-export const authConfig: AuthOptions = {
+export const authConfig: NextAuthOptions = {
+  adapter: MongoDBAdapter(clientPromise),
+  session: {
+    strategy: 'jwt',
+  },
+  secret: process.env.NEXTAUTH_SECRET!,
+  // Configure one or more authentication providers
   providers: [
-    GoogleProvider({clientId: process.env.GOOGLE_CLIENT_ID!, clientSecret: process.env.GOOGLE_SECRET!}),
-    Credentials({
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID!,
+      clientSecret: process.env.GOOGLE_SECRET!,
+    }),
+    // ...add more providers here
+    CredentialsProvider({
+      name: 'Credentials',
+      id: 'credentials',
       credentials: {
-        email: {label: 'email', type: 'email', required: true},
-        password: {label: 'password', type: 'password', required: true},
+        email: {
+          label: 'email',
+          type: 'email',
+          placeholder: 'email@example.com',
+        },
+        password: {label: 'Password', type: 'password'},
       },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+      async authorize(credentials, req) {
+        await dbConnect();
+        // Add logic here to look up the user from the credentials supplied
+        if (credentials == null) return null;
+        // login
 
-        const currentUser = users.find((u) => u.email === credentials.email);
+        try {
+          const user = await User.findOne({email: credentials.email});
 
-        if (currentUser && currentUser.password === credentials.password) {
-          const {password, ...userWithoutPass} = currentUser;
-          return userWithoutPass as User;
+          if (user) {
+            const isMatch = await bcrypt.compare(credentials.password, user.password);
+            if (isMatch) {
+              return user;
+            } else {
+              throw new Error('Email or password is incorrect');
+            }
+          } else {
+            throw new Error('User not found');
+          }
+        } catch (err: any) {
+          throw new Error(err);
         }
-
-        return null;
       },
     }),
   ],
-  pages: {signIn: '/auth'},
+  pages: {
+    signIn: '/login',
+    newUser: '/profile',
+    error: '/login',
+  },
+  callbacks: {
+    // We can pass in additional information from the user document MongoDB returns
+    async jwt({token, user}: any) {
+      if (user) {
+        token.user = {
+          _id: user._id,
+          email: user.email,
+          name: user?.name,
+          image: user?.image,
+        };
+      }
+      return token;
+    },
+    // If we want to access our extra user info from sessions we have to pass it the token here to get them in sync:
+    session: async ({session, token}: any) => {
+      if (token) {
+        session.user = token.user;
+      }
+      return session;
+    },
+  },
 };
+
+export default NextAuth(authConfig);

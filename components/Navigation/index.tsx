@@ -6,11 +6,12 @@ import Image from 'next/image';
 import {useSession, signOut} from 'next-auth/react';
 import {MenuLink, MenuWrapper, MenuMoreLink, StyledSpan, AuthElementWrapper} from './styles';
 import {ActorsPaths, MoviesPaths, ShowPaths} from '@/constants/common';
+import {ImProfile} from 'react-icons/im';
 
 export const Navigation = () => {
   const session = useSession();
   // console.log('session', session);
-  const isHidden = true;
+  const isHidden = false;
   return (
     <MenuWrapper>
       <MoviesMenuMore />
@@ -21,20 +22,24 @@ export const Navigation = () => {
           {session?.data ? (
             <AuthElementWrapper>
               <MenuLink href="/profile">
-                <Image
-                  style={{borderRadius: '8px'}}
-                  src={session?.data?.user!.image!}
-                  width={40}
-                  height={40}
-                  alt="user logo"
-                />
+                {session?.data?.user?.image ? (
+                  <Image
+                    style={{borderRadius: '8px'}}
+                    src={session?.data?.user?.image}
+                    width={40}
+                    height={40}
+                    alt="user logo"
+                  />
+                ) : (
+                  <ImProfile />
+                )}
               </MenuLink>
               <MenuLink href="#" onClick={() => signOut({callbackUrl: '/'})}>
                 <StyledSpan>Log out</StyledSpan>
               </MenuLink>
             </AuthElementWrapper>
           ) : (
-            <MenuLink href="/auth">Log in</MenuLink>
+            <MenuLink href="/login">Log in</MenuLink>
           )}
         </>
       )}
