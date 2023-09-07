@@ -19,7 +19,7 @@ export const RegisterForm = () => {
   const session = useSession();
 
   if (session.status === 'authenticated') {
-    router?.push('/my/dashboard');
+    router?.push('/profile');
   }
 
   const [message, setMessage] = useState<null | string>(null);
@@ -39,7 +39,7 @@ export const RegisterForm = () => {
           password,
         }),
       });
-      res.status === 201 && router.push('/login?success=Account has been created');
+      res.status === 201 && router.push('/login');
     } catch (err: any) {
       setMessage(err);
     }
@@ -47,23 +47,40 @@ export const RegisterForm = () => {
 
   return (
     <Form onFinish={formSubmit} style={{maxWidth: 450}}>
-      <Form.Item name="name" rules={[{required: true, message: 'Please input your name!'}]}>
+      <Form.Item
+        name="name"
+        rules={[{required: true, message: 'Please input your name!'}]}>
         <Input prefix={<UserOutlined />} placeholder="Name" />
       </Form.Item>
 
-      <Form.Item name="email" rules={[{required: true, message: 'Please input your email!'}]}>
+      <Form.Item
+        name="email"
+        rules={[{required: true, message: 'Please input your email!'}]}>
         <Input prefix={<MailOutlined />} placeholder="Email" />
       </Form.Item>
 
-      <Form.Item name="password" rules={[{required: true, message: 'Please input your Password!'}]}>
-        <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+      <Form.Item
+        name="password"
+        rules={[{required: true, message: 'Please input your Password!'}]}>
+        <Input
+          prefix={<LockOutlined />}
+          type="password"
+          placeholder="Password"
+        />
       </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit">
           Register
         </Button>
-        {message && <Alert style={{marginTop: 20}} message={message} type="error" showIcon />}
+        {message && (
+          <Alert
+            style={{marginTop: 20}}
+            message={message}
+            type="error"
+            showIcon
+          />
+        )}
         <Divider>Or</Divider>
         <GoogleButton />
         <Divider />

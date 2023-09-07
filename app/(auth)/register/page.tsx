@@ -2,6 +2,7 @@ import {Metadata} from 'next';
 
 import {RegisterForm} from '@/components/Auth/Register';
 import {StyledTitle} from '@/app/styles';
+import {FormWrapper, FormContainer} from '../styles';
 
 export const metadata: Metadata = {
   title: 'Streaming service | Register',
@@ -10,10 +11,12 @@ export const metadata: Metadata = {
 
 const Register = () => {
   return (
-    <section>
+    <FormWrapper>
       <StyledTitle>Create Personal Account</StyledTitle>
-      <RegisterForm />
-    </section>
+      <FormContainer>
+        <RegisterForm />
+      </FormContainer>
+    </FormWrapper>
   );
 };
 

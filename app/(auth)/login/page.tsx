@@ -1,6 +1,7 @@
 import {Metadata} from 'next';
 import {LoginForm} from '@/components/Auth/Login';
 import {StyledTitle} from '@/app/styles';
+import {FormWrapper, FormContainer} from '../styles';
 
 export const metadata: Metadata = {
   title: 'Streaming service | Login',
@@ -9,9 +10,11 @@ export const metadata: Metadata = {
 
 export default function Login() {
   return (
-    <section>
-      <StyledTitle>Log in</StyledTitle>
-      <LoginForm />
-    </section>
+    <FormWrapper>
+        <StyledTitle>Log in</StyledTitle>
+        <FormContainer>
+          <LoginForm />
+        </FormContainer>
+    </FormWrapper>
   );
 }

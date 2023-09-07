@@ -1,11 +1,7 @@
 import {PropsWithChildren} from 'react';
 
-import {LayoutWrapper, LayoutContent} from '@/app/styles';
+import {LayoutWrapper} from '@/app/styles';
 
 export default function ActorsLayout({children}: PropsWithChildren) {
-  return (
-    <LayoutWrapper>
-      <LayoutContent>{children}</LayoutContent>
-    </LayoutWrapper>
-  );
+  return <LayoutWrapper>{children}</LayoutWrapper>;
 }
