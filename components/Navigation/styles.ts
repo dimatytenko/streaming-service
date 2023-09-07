@@ -22,7 +22,11 @@ export const MenuMoreLink = styled.div`
   font-size: 24px;
 `;
 
-export const AuthElementWrapper = styled.div``;
+export const AuthElementWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const StyledSpan = styled.span`
   font-weight: 300;
