@@ -4,19 +4,35 @@ import type {MenuProps} from 'antd';
 import Link from 'next/link';
 import Image from 'next/image';
 import {useSession, signOut} from 'next-auth/react';
-import {MenuLink, MenuWrapper, MenuMoreLink, StyledSpan, AuthElementWrapper} from './styles';
+import {
+  MenuLink,
+  MenuWrapper,
+  MenuMoreLink,
+  StyledSpan,
+  AuthElementWrapper,
+} from './styles';
 import {ActorsPaths, MoviesPaths, ShowPaths} from '@/constants/common';
 import {ImProfile} from 'react-icons/im';
 
-export const Navigation = () => {
+interface INavigationProps {
+  onClickItem?: () => void;
+}
+
+export const Navigation: React.FC<INavigationProps> = ({onClickItem}) => {
   const session = useSession();
   // console.log('session', session);
   const isHidden = false;
+
+  const onLogoutClick = () => {
+    signOut({callbackUrl: '/'});
+    onClickItem && onClickItem();
+  };
+
   return (
     <MenuWrapper>
-      <MoviesMenuMore />
-      <ShowsMenuMore />
-      <ActorsMenuMore />
+      <MoviesMenuMore onClickItem={onClickItem} />
+      <ShowsMenuMore onClickItem={onClickItem} />
+      <ActorsMenuMore onClickItem={onClickItem} />
       {!isHidden && (
         <>
           {session?.data ? (
@@ -34,12 +50,14 @@ export const Navigation = () => {
                   <ImProfile />
                 )}
               </MenuLink>
-              <MenuLink href="#" onClick={() => signOut({callbackUrl: '/'})}>
+              <MenuLink href="#" onClick={onLogoutClick}>
                 <StyledSpan>Log out</StyledSpan>
               </MenuLink>
             </AuthElementWrapper>
           ) : (
-            <MenuLink href="/login">Log in</MenuLink>
+            <MenuLink href="/login" onClick={() => onClickItem?.()}>
+              Log in
+            </MenuLink>
           )}
         </>
       )}
@@ -47,19 +65,37 @@ export const Navigation = () => {
   );
 };
 
-export const ActorsMenuMore = () => {
+interface INavigationItemProps {
+  onClickItem?: () => void;
+}
+
+export const ActorsMenuMore: React.FC<INavigationItemProps> = ({
+  onClickItem,
+}) => {
   const items: MenuProps['items'] = [
     {
       key: 1,
-      label: <Link href={ActorsPaths.ACTORS}>Popular</Link>,
+      label: (
+        <Link href={ActorsPaths.ACTORS} onClick={onClickItem}>
+          Popular
+        </Link>
+      ),
     },
     {
       key: 2,
-      label: <Link href={ActorsPaths.TODAY}>Popular today</Link>,
+      label: (
+        <Link href={ActorsPaths.TODAY} onClick={onClickItem}>
+          Popular today
+        </Link>
+      ),
     },
     {
       key: 3,
-      label: <Link href={ActorsPaths.WEEK}>Popular this week</Link>,
+      label: (
+        <Link href={ActorsPaths.WEEK} onClick={onClickItem}>
+          Popular this week
+        </Link>
+      ),
     },
   ];
 
@@ -70,31 +106,57 @@ export const ActorsMenuMore = () => {
   );
 };
 
-export const ShowsMenuMore = () => {
+export const ShowsMenuMore: React.FC<INavigationItemProps> = ({
+  onClickItem,
+}) => {
   const items: MenuProps['items'] = [
     {
       key: 1,
-      label: <Link href={ShowPaths.SHOWS}>Popular</Link>,
+      label: (
+        <Link href={ShowPaths.SHOWS} onClick={onClickItem}>
+          Popular
+        </Link>
+      ),
     },
     {
       key: 2,
-      label: <Link href={ShowPaths.TODAY}>Popular today</Link>,
+      label: (
+        <Link href={ShowPaths.TODAY} onClick={onClickItem}>
+          Popular today
+        </Link>
+      ),
     },
     {
       key: 3,
-      label: <Link href={ShowPaths.WEEK}>Popular this week</Link>,
+      label: (
+        <Link href={ShowPaths.WEEK} onClick={onClickItem}>
+          Popular this week
+        </Link>
+      ),
     },
     {
       key: 4,
-      label: <Link href={ShowPaths.ON_THE_AIR}>On the air</Link>,
+      label: (
+        <Link href={ShowPaths.ON_THE_AIR} onClick={onClickItem}>
+          On the air
+        </Link>
+      ),
     },
     {
       key: 5,
-      label: <Link href={ShowPaths.TOP_RATED}>Top rated</Link>,
+      label: (
+        <Link href={ShowPaths.TOP_RATED} onClick={onClickItem}>
+          Top rated
+        </Link>
+      ),
     },
     {
       key: 6,
-      label: <Link href={ShowPaths.AIRING_TODAY}>Airing today</Link>,
+      label: (
+        <Link href={ShowPaths.AIRING_TODAY} onClick={onClickItem}>
+          Airing today
+        </Link>
+      ),
     },
   ];
 
@@ -105,19 +167,33 @@ export const ShowsMenuMore = () => {
   );
 };
 
-export const MoviesMenuMore = () => {
+export const MoviesMenuMore: React.FC<INavigationItemProps> = ({
+  onClickItem,
+}) => {
   const items: MenuProps['items'] = [
     {
       key: 1,
-      label: <Link href={MoviesPaths.MOVIES}>Popular</Link>,
+      label: (
+        <Link href={MoviesPaths.MOVIES} onClick={onClickItem}>
+          Popular
+        </Link>
+      ),
     },
     {
       key: 2,
-      label: <Link href={MoviesPaths.TODAY}>Popular today</Link>,
+      label: (
+        <Link href={MoviesPaths.TODAY} onClick={onClickItem}>
+          Popular today
+        </Link>
+      ),
     },
     {
       key: 3,
-      label: <Link href={MoviesPaths.WEEK}>Popular this week</Link>,
+      label: (
+        <Link href={MoviesPaths.WEEK} onClick={onClickItem}>
+          Popular this week
+        </Link>
+      ),
     },
   ];
 

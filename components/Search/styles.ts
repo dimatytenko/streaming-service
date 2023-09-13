@@ -6,7 +6,7 @@ import {Card} from 'antd';
 
 export const StyledSearch = styled(Search)`
   &.ant-input-group-wrapper {
-    width: 30%;
+    width: 100%;
   }
   &.ant-input-search
     > .ant-input-group

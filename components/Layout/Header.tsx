@@ -1,21 +1,48 @@
-import {HeaderWrapper, HeaderContent} from './styles';
-import logo from '@/assets/logo.png';
 import Image from 'next/image';
-import Link from 'next/link';
-import {Navigation} from '../Navigation';
-import {Container} from '@/app/styles';
-import {GlobalSearch} from '../Search/GlobalSeach';
+import {Sling as Hamburger} from 'hamburger-react';
 
-export const Header: React.FC = () => {
+import logo from '@/assets/logo.png';
+import {Navigation} from '@/components/Navigation';
+import {Container} from '@/app/styles';
+import {GlobalSearch} from '@/components/Search/GlobalSeach';
+import {
+  HeaderWrapper,
+  HeaderContent,
+  DesktopNavigationWrapper,
+  MobileNavigationWrapper,
+  Menu,
+  Logo,
+} from './styles';
+
+interface IHeaderProps {
+  toggleDrawer: () => void;
+  onCloseDrawer: () => void;
+  isOpen: boolean;
+}
+
+export const Header: React.FC<IHeaderProps> = ({
+  isOpen,
+  toggleDrawer,
+  onCloseDrawer,
+}) => {
   return (
     <HeaderWrapper>
       <Container>
         <HeaderContent>
-          <Link href="/">
+          <Logo href="/" onClick={onCloseDrawer}>
             <Image src={logo} alt="logo" height={50} priority />
-          </Link>
-          <GlobalSearch />
-          <Navigation />
+          </Logo>
+          <DesktopNavigationWrapper>
+            <GlobalSearch />
+          </DesktopNavigationWrapper>
+          <DesktopNavigationWrapper>
+            <Navigation />
+          </DesktopNavigationWrapper>
+          <MobileNavigationWrapper>
+            <Menu onClick={toggleDrawer}>
+              <Hamburger toggled={isOpen} aria-label="Burger button" />
+            </Menu>
+          </MobileNavigationWrapper>
         </HeaderContent>
       </Container>
     </HeaderWrapper>
