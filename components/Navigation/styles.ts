@@ -2,10 +2,16 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {Media} from '@/theme/breakpoints';
+
 export const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
+
+  ${Media.down.l} {
+    flex-direction: column;
+  }
 `;
 
 export const MenuLink = styled(Link)`
